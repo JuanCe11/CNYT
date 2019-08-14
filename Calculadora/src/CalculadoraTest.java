@@ -45,6 +45,7 @@ class CalculadoraTest {
 		int[] c1 = {0,3};
 		int[] c2 = {-1,-1};		
 		Complejo respuesta = calc.division(c1, c2);
+		
 		Assert.assertEquals(respuesta,new Complejo((double)-3/2,(double)-3/2));
 	}
 	
@@ -54,7 +55,8 @@ class CalculadoraTest {
 		int[] c2 = {4,-5};		
 		Complejo respuesta = calc.division(c1, c2);
 		//System.out.println(respuesta);
-		//Assert.assertEquals(respuesta,new Complejo(-3/2,-3/2));
+		//System.out.println(correcto);
+		Assert.assertEquals(respuesta,new Complejo((double)23/41,(double)-2/41));
 	}
 	
 	@Test
@@ -62,8 +64,45 @@ class CalculadoraTest {
 		int[] c1 = {-3,-1};
 		int[] c2 = {1,-2};		
 		Complejo respuesta = calc.division(c1, c2);
-		//System.out.println(respuesta);
-		//Assert.assertEquals(respuesta,new Complejo(-3/2,-3/2));
+		Assert.assertEquals(respuesta,new Complejo((double)-1/5,(double)-7/5));
 	}
-
+	
+	@Test
+	public void deberiaModulo() {
+		int[] c1 = {-3,4};
+		double respuesta = calc.modulo(c1);
+		Assert.assertTrue(respuesta==5.0);
+	}
+	
+	@Test
+	public void deberiaModulo1() {
+		int[] c1 = {0,2};
+		double respuesta = calc.modulo(c1);
+		Assert.assertTrue(respuesta == 2.0);
+	}
+	
+	@Test
+	public void deberiaConjugado() {
+		int[] c1 = {0,2};
+		Complejo respuesta = calc.conjugado(c1);
+		Assert.assertEquals(respuesta,new Complejo(0,(double)-2.0));
+	}
+	
+	@Test
+	public void deberiaConjugado1() {
+		int[] c1 = {20,-65};
+		Complejo respuesta = calc.conjugado(c1);
+		Assert.assertEquals(respuesta,new Complejo(20,(double)65));
+	}
+	
+	@Test
+	public void deberiaRectangularAPolar() {
+		int[] c1 = {4,-3};
+		double[] respuesta = calc.recPol(c1);
+		System.out.println((double)Math.toDegrees(Math.atan(-3/4)));
+		double[] correcta = {5.0,(double)Math.toDegrees(Math.atan(-3/4))};
+		System.out.println(respuesta[0]+" "+respuesta[1]);
+		System.out.println(correcta[0]+" "+correcta[1]);
+		Assert.assertEquals(respuesta,correcta);
+	}
 }

@@ -3,7 +3,7 @@ public class Complejo {
 	private double real;
 	private double imaginaria;
 	private double modulo;
-	private float fase;
+	private double fase;
 	
 	public Complejo(double real,double imaginaria) {
 		this.real = real;
@@ -11,11 +11,21 @@ public class Complejo {
 		setFase();
 		setModulo();
 	}
+	
+	public Complejo(double modulo, float fase,int polar) {
+		this.fase = fase;
+		this.modulo = modulo;
+		setRectangular();
+	}
+
+	private void setRectangular() {
+		real = Math.cos(fase)*modulo;
+		imaginaria = Math.sin(fase)*modulo;
+	}
 
 	public double getReal() {
 		return real;
 	}
-
 
 	public double getImaginaria() {
 		return imaginaria;
@@ -30,7 +40,7 @@ public class Complejo {
 	}
 	
 	private void setFase() {
-		this.fase = (float) Math.atan(imaginaria/real);
+		fase = (float) Math.toDegrees(Math.atan(imaginaria/real));
 		if(real<0 && imaginaria<0 || real<0 && imaginaria>0) {
 			fase+=180;
 		}else if (real>0 && imaginaria<0) {
@@ -38,7 +48,7 @@ public class Complejo {
 		}
 	}
 	
-	public float getFase() {
+	public double getFase() {
 		return fase;
 	}
 	
@@ -52,7 +62,7 @@ public class Complejo {
 	}
 	
 	public String toString() {
-		String s = "";
+		String s = "(";
 		if(real != 0) {
 			s += Double.toString(real);
 			if (imaginaria > 0) {
@@ -60,7 +70,7 @@ public class Complejo {
 			}
 		}
 		if (imaginaria != 0) {
-			s +=" "+Double.toString(imaginaria)+"i";
+			s += " " +Double.toString(imaginaria)+"i)";
 		}
 		return s;
 	}
