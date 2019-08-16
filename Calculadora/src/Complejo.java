@@ -19,8 +19,9 @@ public class Complejo {
 	}
 
 	private void setRectangular() {
-		real = Math.cos(fase)*modulo;
-		imaginaria = Math.sin(fase)*modulo;
+		real = Math.cos(Math.toRadians(fase))*modulo;
+		imaginaria = Math.sin(Math.toRadians(fase))*modulo;
+		if (fase%90 == 0)real = 0.0;
 	}
 
 	public double getReal() {
@@ -40,7 +41,7 @@ public class Complejo {
 	}
 	
 	private void setFase() {
-		fase = (float) Math.toDegrees(Math.atan(imaginaria/real));
+		fase = (double) Math.toDegrees(Math.atan(imaginaria/real));
 		if(real<0 && imaginaria<0 || real<0 && imaginaria>0) {
 			fase+=180;
 		}else if (real>0 && imaginaria<0) {

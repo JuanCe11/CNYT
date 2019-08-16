@@ -54,8 +54,6 @@ class CalculadoraTest {
 		int[] c1 = {2,-3};
 		int[] c2 = {4,-5};		
 		Complejo respuesta = calc.division(c1, c2);
-		//System.out.println(respuesta);
-		//System.out.println(correcto);
 		Assert.assertEquals(respuesta,new Complejo((double)23/41,(double)-2/41));
 	}
 	
@@ -99,10 +97,58 @@ class CalculadoraTest {
 	public void deberiaRectangularAPolar() {
 		int[] c1 = {4,-3};
 		double[] respuesta = calc.recPol(c1);
-		System.out.println((double)Math.toDegrees(Math.atan(-3/4)));
-		double[] correcta = {5.0,(double)Math.toDegrees(Math.atan(-3/4))};
-		System.out.println(respuesta[0]+" "+respuesta[1]);
-		System.out.println(correcta[0]+" "+correcta[1]);
-		Assert.assertEquals(respuesta,correcta);
+		double[] correcta = {5.0,convertirAngulo(Math.toDegrees(Math.atan((double)-3/4)),4,-3)};
+		Assert.assertTrue(respuesta[0]==correcta[0]&&respuesta[1]==correcta[1]);
+	}
+	
+	@Test
+	public void deberiaPolarARectangular() {
+		int[] c1 = {1,90};
+		double[] respuesta = calc.polRec(c1);
+		double[] correcta = {0.0,1.0};
+		Assert.assertTrue(respuesta[0]==correcta[0]&&respuesta[1]==correcta[1]);
+	}
+	
+	@Test
+	public void deberiadarFase() {
+		int[] c1 = {-3,4};
+		double respuesta = calc.fase(c1);
+		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)-4/3)),-3,4);
+		Assert.assertTrue(respuesta == correcta);
+	}
+	
+	@Test
+	public void deberiadarFase1() {
+		int[] c1 = {3,4};
+		double respuesta = calc.fase(c1);
+		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)4/3)),3,4);
+		Assert.assertTrue(respuesta == correcta);
+	}
+	
+	@Test
+	public void deberiadarFase2() {
+		int[] c1 = {3,-4};
+		double respuesta = calc.fase(c1);
+		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)-4/3)),3,-4);
+		Assert.assertTrue(respuesta == correcta);
+	}
+	
+	@Test
+	public void deberiadarFase3() {
+		int[] c1 = {-3,-4};
+		double respuesta = calc.fase(c1);
+		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)4/3)),-3,-4);
+		Assert.assertTrue(respuesta == correcta);
+	}
+	
+	private double convertirAngulo(double angulo,double real,double imaginaria) {
+		double fase;
+		fase = (double) Math.toDegrees(Math.atan(imaginaria/real));
+		if(real<0 && imaginaria<0 || real<0 && imaginaria>0) {
+			fase+=180;
+		}else if (real>0 && imaginaria<0) {
+			fase+=360;
+		}
+		return fase;
 	}
 }

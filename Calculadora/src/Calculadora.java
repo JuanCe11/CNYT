@@ -101,4 +101,33 @@ public class Calculadora {
 		pol[1] = c1.getFase();
 		return pol;
 	}
+	
+	public double[] recPol(Complejo c1) {
+		double [] pol = new double[2];
+		pol[0] =  c1.getModulo();
+		pol[1] = c1.getFase();
+		return pol;
+	}
+	
+	public double[] polRec(int[] com1) {
+		Complejo c1 = new Complejo(com1[0],com1[1],0);
+		double [] rec = new double[2];
+		rec[0] =  c1.getReal();
+		rec[1] = c1.getImaginaria();
+		return rec;
+	}
+	
+	public double[] polRec(Complejo c1) {
+		double [] rec = new double[2];
+		rec[0] =  c1.getReal();
+		rec[1] = c1.getImaginaria();
+		return rec;
+	}
+	
+	public double fase(int[] com1) {
+		Complejo c1 = new Complejo(com1[0],com1[1]);
+		double fase;
+		fase = c1.getFase();
+		return fase;
+	}
 }
