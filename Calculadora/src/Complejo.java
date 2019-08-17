@@ -5,6 +5,11 @@ public class Complejo {
 	private double modulo;
 	private double fase;
 	
+	/**
+	 * Crea un numero complejo dadas sus coordenadas rectangulares
+	 * @param real la parte real del numero
+	 * @param imaginaria la parte imaginaria del numero
+	 */
 	public Complejo(double real,double imaginaria) {
 		this.real = real;
 		this.imaginaria = imaginaria;
@@ -12,34 +17,61 @@ public class Complejo {
 		setModulo();
 	}
 	
+	/**
+	 * Crea un numero complejo dadas sus coordenadas polares
+	 * @param modulo el modulo del numero
+	 * @param fase la fase del numero 
+	 * @param polar un indicador de que son coordenadas polares
+	 */
 	public Complejo(double modulo, float fase,int polar) {
 		this.fase = fase;
 		this.modulo = modulo;
 		setRectangular();
 	}
 
+	/**
+	 * Calcula las cooredenadas rectangulares del numero
+	 */
 	private void setRectangular() {
 		real = Math.cos(Math.toRadians(fase))*modulo;
 		imaginaria = Math.sin(Math.toRadians(fase))*modulo;
 		if (fase%90 == 0)real = 0.0;
 	}
 
+	/**
+	 * Da la parte real del numero
+	 * @return la parte real del numero
+	 */
 	public double getReal() {
 		return real;
 	}
 
+	/**
+	 * Da la parte real del imaginaria
+	 * @return la parte imaginaria del numero
+	 */
 	public double getImaginaria() {
 		return imaginaria;
 	}
-
-	public void setImaginaria(float imaginaria) {
-		this.imaginaria = imaginaria;
+	
+	/**
+	 * Calcula y asigna el modulo del numero
+	 */
+	public void setModulo() {
+		this.modulo = Math.sqrt(Math.pow(real, 2) + Math.pow(imaginaria, 2));		
 	}
 
+	/**
+	 * Da le modulo del numero
+	 * @return el modulo del numero
+	 */
 	public double getModulo() {
 		return modulo;
 	}
 	
+	/**
+	 * Calcula y asigna la fase del numero
+	 */
 	private void setFase() {
 		fase = (double) Math.toDegrees(Math.atan(imaginaria/real));
 		if(real<0 && imaginaria<0 || real<0 && imaginaria>0) {
@@ -49,14 +81,18 @@ public class Complejo {
 		}
 	}
 	
+	/**
+	 * Da la fase del numero
+	 * @return la fase del numero
+	 */
 	public double getFase() {
 		return fase;
 	}
 	
-	public void setModulo() {
-		this.modulo = Math.sqrt(Math.pow(real, 2) + Math.pow(imaginaria, 2));		
-	}
-	
+	/**
+	 * Calcula y devuelve el conjugado de si mismo 
+	 * @return el conjugado de si mismo
+	 */
 	public Complejo conjugado() {
 		return new Complejo(real,imaginaria*-1);
 		
