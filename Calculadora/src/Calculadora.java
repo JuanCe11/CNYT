@@ -97,10 +97,14 @@ public class Calculadora {
 	 * @param complejo1 las componentes rectangulares del numero 1
 	 * @param complejo2 las componentes rectangulares del numero 1
 	 * @return un numero complejo con la resta de complejo1 y complejo2
+	 * @throws CalculadoraException cuando el divisor es 0
 	 */
-	public Complejo division(int[] complejo1, int[] complejo2) {
+	public Complejo division(int[] complejo1, int[] complejo2) throws CalculadoraException {
 		Complejo c1 = new Complejo(complejo1[0],complejo1[1]);
 		Complejo c2 = new Complejo(complejo2[0],complejo2[1]);
+		if (c2.equals(new Complejo(0,0))) {
+			throw new CalculadoraException(CalculadoraException.DIVISION_CERO);
+		}
 		Complejo c3 = c2.conjugado();
 		Complejo numerador = multiplicacion(c1,c3);
 		double modulo = Math.pow(c2.getReal(), 2) + Math.pow(c2.getImaginaria(), 2);
@@ -115,8 +119,12 @@ public class Calculadora {
 	 * @param c1 el primer numero complejo
 	 * @param c2 el segundo numero complejo
 	 * @return un numero complejo con la division de complejo1 y complejo2
+	 * @throws CalculadoraException cuando el divisor es 0
 	 */
-	public Complejo division(Complejo c1, Complejo c2) {
+	public Complejo division(Complejo c1, Complejo c2) throws CalculadoraException {
+		if (c2.equals(new Complejo(0,0))) {
+			throw new CalculadoraException(CalculadoraException.DIVISION_CERO);
+		}	
 		Complejo c3 = c2.conjugado();
 		Complejo numerador = multiplicacion(c1,c3);
 		double modulo = Math.pow(c2.getReal(), 2) + Math.pow(c2.getImaginaria(), 2);
@@ -233,4 +241,12 @@ public class Calculadora {
 	public double fase(Complejo c1) {
 		return c1.getFase();
 	}
+	
+	public Matriz sumaMatriz(Matriz m1, Matriz m2) {
+		if(m1.getNumeros().length!=m2.getNumeros().length || m1.getNumeros()[0].length!=m2.getNumeros()[0].length ) {
+			throw CalculadoraException(CalculadoraException);
+		}
+		return null;
+	}
+	
 }

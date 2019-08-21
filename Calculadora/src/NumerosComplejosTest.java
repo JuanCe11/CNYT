@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-class CalculadoraTest {
+class NumerosComplejosTest {
 	
 	Calculadora calc = Calculadora.getCalculadora();
 	
@@ -35,8 +35,13 @@ class CalculadoraTest {
 	@Test
 	public void deberiaDividir() {
 		int[] c1 = {-2,1};
-		int[] c2 = {1,2};		
-		Complejo respuesta = calc.division(c1, c2);
+		int[] c2 = {1,2};
+		Complejo respuesta = null;
+		try {
+			respuesta = calc.division(c1, c2);
+		}catch(CalculadoraException e) {
+			e.printStackTrace();
+		}
 		Assert.assertEquals(respuesta,new Complejo(0,1));
 	}
 	
@@ -44,7 +49,12 @@ class CalculadoraTest {
 	public void deberiaDividir1() {
 		int[] c1 = {0,3};
 		int[] c2 = {-1,-1};		
-		Complejo respuesta = calc.division(c1, c2);
+		Complejo respuesta = null;
+		try {
+			respuesta = calc.division(c1, c2);
+		}catch(CalculadoraException e) {
+			e.printStackTrace();
+		}
 		
 		Assert.assertEquals(respuesta,new Complejo((double)-3/2,(double)-3/2));
 	}
@@ -53,7 +63,12 @@ class CalculadoraTest {
 	public void deberiaDividir2() {
 		int[] c1 = {2,-3};
 		int[] c2 = {4,-5};		
-		Complejo respuesta = calc.division(c1, c2);
+		Complejo respuesta = null;
+		try {
+			respuesta = calc.division(c1, c2);
+		}catch(CalculadoraException e) {
+			e.printStackTrace();
+		}
 		Assert.assertEquals(respuesta,new Complejo((double)23/41,(double)-2/41));
 	}
 	
@@ -61,8 +76,25 @@ class CalculadoraTest {
 	public void deberiaDividir3() {
 		int[] c1 = {-3,-1};
 		int[] c2 = {1,-2};		
-		Complejo respuesta = calc.division(c1, c2);
+		Complejo respuesta = null;
+		try {
+			respuesta = calc.division(c1, c2);
+		}catch(CalculadoraException e) {
+			e.printStackTrace();
+		}
 		Assert.assertEquals(respuesta,new Complejo((double)-1/5,(double)-7/5));
+	}
+	
+	@Test
+	public void deberiaDividir4() {
+		int[] c1 = {-3,-1};
+		int[] c2 = {0,0};		
+		Complejo respuesta = null;
+		try {
+			respuesta = calc.division(c1, c2);
+		}catch(CalculadoraException e) {
+			Assert.assertEquals(e.getMessage(),CalculadoraException.DIVISION_CERO);
+		}
 	}
 	
 	@Test
