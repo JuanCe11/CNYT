@@ -1,3 +1,4 @@
+import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 public class CalculadoraMatrices {
 	
@@ -118,7 +119,6 @@ public class CalculadoraMatrices {
 	
 	public static Matriz matrizAdjunta(Matriz m1){
 		return matrizTranspuesta(matrizConjugada(m1));
-	}	
-	
-
+		
+	}
 }
