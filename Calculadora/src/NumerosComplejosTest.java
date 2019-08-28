@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 class NumerosComplejosTest {
 	
-	Calculadora calc = Calculadora.getCalculadora();
+	
 	
 	@Test
 	public void deberiaSumar() {
 		int[] c1 = {0,1};
 		int[] c2 = {1,0};		
-		Complejo respuesta = calc.suma(c1,c2);
+		Complejo respuesta = Calculadora.suma(c1,c2);
 		Assert.assertEquals(respuesta,new Complejo(1,1));
 	}
 	
@@ -20,7 +20,7 @@ class NumerosComplejosTest {
 	public void deberiaMultiplicar() {
 		int[] c1 = {3,-2};
 		int[] c2 = {6,8};		
-		Complejo respuesta = calc.multiplicacion(c1, c2);
+		Complejo respuesta = Calculadora.multiplicacion(c1, c2);
 		Assert.assertEquals(respuesta,new Complejo(34,12));
 	}
 	
@@ -28,7 +28,7 @@ class NumerosComplejosTest {
 	public void deberiaMultiplicar1() {
 		int[] c1 = {-3,-1};
 		int[] c2 = {1,-2};		
-		Complejo respuesta = calc.multiplicacion(c1, c2);
+		Complejo respuesta = Calculadora.multiplicacion(c1, c2);
 		Assert.assertEquals(respuesta,new Complejo(-5,5));
 	}
 	
@@ -38,7 +38,7 @@ class NumerosComplejosTest {
 		int[] c2 = {1,2};
 		Complejo respuesta = null;
 		try {
-			respuesta = calc.division(c1, c2);
+			respuesta = Calculadora.division(c1, c2);
 		}catch(CalculadoraException e) {
 			e.printStackTrace();
 		}
@@ -51,7 +51,7 @@ class NumerosComplejosTest {
 		int[] c2 = {-1,-1};		
 		Complejo respuesta = null;
 		try {
-			respuesta = calc.division(c1, c2);
+			respuesta = Calculadora.division(c1, c2);
 		}catch(CalculadoraException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +65,7 @@ class NumerosComplejosTest {
 		int[] c2 = {4,-5};		
 		Complejo respuesta = null;
 		try {
-			respuesta = calc.division(c1, c2);
+			respuesta = Calculadora.division(c1, c2);
 		}catch(CalculadoraException e) {
 			e.printStackTrace();
 		}
@@ -78,7 +78,7 @@ class NumerosComplejosTest {
 		int[] c2 = {1,-2};		
 		Complejo respuesta = null;
 		try {
-			respuesta = calc.division(c1, c2);
+			respuesta = Calculadora.division(c1, c2);
 		}catch(CalculadoraException e) {
 			e.printStackTrace();
 		}
@@ -89,9 +89,9 @@ class NumerosComplejosTest {
 	public void deberiaDividir4() {
 		int[] c1 = {-3,-1};
 		int[] c2 = {0,0};		
-		Complejo respuesta = null;
+		Complejo respuesta;
 		try {
-			respuesta = calc.division(c1, c2);
+			respuesta = Calculadora.division(c1, c2);
 		}catch(CalculadoraException e) {
 			Assert.assertEquals(e.getMessage(),CalculadoraException.DIVISION_CERO);
 		}
@@ -100,35 +100,35 @@ class NumerosComplejosTest {
 	@Test
 	public void deberiaModulo() {
 		int[] c1 = {-3,4};
-		double respuesta = calc.modulo(c1);
+		double respuesta = Calculadora.modulo(c1);
 		Assert.assertTrue(respuesta==5.0);
 	}
 	
 	@Test
 	public void deberiaModulo1() {
 		int[] c1 = {0,2};
-		double respuesta = calc.modulo(c1);
+		double respuesta = Calculadora.modulo(c1);
 		Assert.assertTrue(respuesta == 2.0);
 	}
 	
 	@Test
 	public void deberiaConjugado() {
 		int[] c1 = {0,2};
-		Complejo respuesta = calc.conjugado(c1);
+		Complejo respuesta = Calculadora.conjugado(c1);
 		Assert.assertEquals(respuesta,new Complejo(0,(double)-2.0));
 	}
 	
 	@Test
 	public void deberiaConjugado1() {
 		int[] c1 = {20,-65};
-		Complejo respuesta = calc.conjugado(c1);
+		Complejo respuesta = Calculadora.conjugado(c1);
 		Assert.assertEquals(respuesta,new Complejo(20,(double)65));
 	}
 	
 	@Test
 	public void deberiaRectangularAPolar() {
 		int[] c1 = {4,-3};
-		double[] respuesta = calc.recPol(c1);
+		double[] respuesta = Calculadora.recPol(c1);
 		double[] correcta = {5.0,convertirAngulo(Math.toDegrees(Math.atan((double)-3/4)),4,-3)};
 		Assert.assertTrue(respuesta[0]==correcta[0]&&respuesta[1]==correcta[1]);
 	}
@@ -136,7 +136,7 @@ class NumerosComplejosTest {
 	@Test
 	public void deberiaPolarARectangular() {
 		int[] c1 = {1,90};
-		double[] respuesta = calc.polRec(c1);
+		double[] respuesta = Calculadora.polRec(c1);
 		double[] correcta = {0.0,1.0};
 		Assert.assertTrue(respuesta[0]==correcta[0]&&respuesta[1]==correcta[1]);
 	}
@@ -144,7 +144,7 @@ class NumerosComplejosTest {
 	@Test
 	public void deberiadarFase() {
 		int[] c1 = {-3,4};
-		double respuesta = calc.fase(c1);
+		double respuesta = Calculadora.fase(c1);
 		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)-4/3)),-3,4);
 		Assert.assertTrue(respuesta == correcta);
 	}
@@ -152,7 +152,7 @@ class NumerosComplejosTest {
 	@Test
 	public void deberiadarFase1() {
 		int[] c1 = {3,4};
-		double respuesta = calc.fase(c1);
+		double respuesta = Calculadora.fase(c1);
 		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)4/3)),3,4);
 		Assert.assertTrue(respuesta == correcta);
 	}
@@ -160,7 +160,7 @@ class NumerosComplejosTest {
 	@Test
 	public void deberiadarFase2() {
 		int[] c1 = {3,-4};
-		double respuesta = calc.fase(c1);
+		double respuesta = Calculadora.fase(c1);
 		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)-4/3)),3,-4);
 		Assert.assertTrue(respuesta == correcta);
 	}
@@ -168,7 +168,7 @@ class NumerosComplejosTest {
 	@Test
 	public void deberiadarFase3() {
 		int[] c1 = {-3,-4};
-		double respuesta = calc.fase(c1);
+		double respuesta = Calculadora.fase(c1);
 		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)4/3)),-3,-4);
 		Assert.assertTrue(respuesta == correcta);
 	}

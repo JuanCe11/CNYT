@@ -8,6 +8,10 @@ public class Matriz {
 		añadirNumeros(numeros);
 	}
 	
+	public Matriz(Complejo[][] numeros){
+		this.numeros = numeros;
+	}
+	
 	public Matriz(int filas, int columnas,int[][] numeros){
 		this.numeros = new Complejo[filas][columnas];
 		añadirNumeros(crearComplejos(numeros));

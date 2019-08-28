@@ -1,3 +1,4 @@
+import org.junit.experimental.theories.FromDataPoints;
 
 public class Calculadora {
 	private static Calculadora calculadora = null;
@@ -22,7 +23,7 @@ public class Calculadora {
 	 * @param complejo2 las componentes rectangulares del numero 1
 	 * @return un numero complejo con la suma de complejo1 y complejo2
 	 */
-	public Complejo suma(int[] complejo1, int[] complejo2){
+	public static Complejo suma(int[] complejo1, int[] complejo2){
 		Complejo c1 = new Complejo(complejo1[0],complejo1[1]);
 		Complejo c2 = new Complejo(complejo2[0],complejo2[1]);
 		Complejo res = new Complejo(c1.getReal() + c2.getReal(), c1.getImaginaria() + c2.getImaginaria());
@@ -35,7 +36,7 @@ public class Calculadora {
 	 * @param complejo2 el segundo numero complejo
 	 * @return un numero complejo con la suma de complejo1 y complejo2
 	 */
-	public Complejo suma(Complejo complejo1, Complejo complejo2){
+	public static Complejo suma(Complejo complejo1, Complejo complejo2){
 		Complejo res = new Complejo(complejo1.getReal() + complejo2.getReal(), complejo1.getImaginaria() + complejo2.getImaginaria());
 		return res;
 	}
@@ -46,7 +47,7 @@ public class Calculadora {
 	 * @param complejo2 las componentes rectangulares del numero 1
 	 * @return un numero complejo con la resta de complejo1 y complejo2
 	 */
-	public Complejo resta(int[] complejo1, int[] complejo2){
+	public static Complejo resta(int[] complejo1, int[] complejo2){
 		Complejo c1 = new Complejo(complejo1[0],complejo1[1]);
 		Complejo c2 = new Complejo(complejo2[0],complejo2[1]);
 		Complejo res = new Complejo(c1.getReal() - c2.getReal(), c1.getImaginaria() - c2.getImaginaria());
@@ -59,7 +60,7 @@ public class Calculadora {
 	 * @param complejo2 el segundo numero complejo
 	 * @return un numero complejo con la resta de complejo1 y complejo2
 	 */
-	public Complejo resta(Complejo complejo1, Complejo complejo2){
+	public static Complejo resta(Complejo complejo1, Complejo complejo2){
 		Complejo res = new Complejo(complejo1.getReal() - complejo2.getReal(), complejo1.getImaginaria() - complejo2.getImaginaria());
 		return res;	
 	}
@@ -70,7 +71,7 @@ public class Calculadora {
 	 * @param complejo2 las componentes rectangulares del numero 1
 	 * @return un numero complejo con la multiplicacion de complejo1 y complejo2
 	 */
-	public Complejo multiplicacion(int[] complejo1, int[] complejo2){
+	public static Complejo multiplicacion(int[] complejo1, int[] complejo2){
 		Complejo c1 = new Complejo(complejo1[0],complejo1[1]);
 		Complejo c2 = new Complejo(complejo2[0],complejo2[1]);
 		double real = (c1.getReal() * c2.getReal()) + (-1 * c1.getImaginaria() * c2.getImaginaria());
@@ -85,7 +86,7 @@ public class Calculadora {
 	 * @param c2 el segundo numero complejo
 	 * @return un numero complejo con la multiplicacion de complejo1 y complejo2
 	 */
-	public Complejo multiplicacion(Complejo c1, Complejo c2) {
+	public static Complejo multiplicacion(Complejo c1, Complejo c2) {
 		double real = (c1.getReal() * c2.getReal()) + (-1 * c1.getImaginaria() * c2.getImaginaria());
 		double imaginaria = (c1.getReal() * c2.getImaginaria()) + (c1.getImaginaria() * c2.getReal());
 		Complejo res = new Complejo(real, imaginaria);
@@ -99,7 +100,7 @@ public class Calculadora {
 	 * @return un numero complejo con la resta de complejo1 y complejo2
 	 * @throws CalculadoraException cuando el divisor es 0
 	 */
-	public Complejo division(int[] complejo1, int[] complejo2) throws CalculadoraException {
+	public static Complejo division(int[] complejo1, int[] complejo2) throws CalculadoraException {
 		Complejo c1 = new Complejo(complejo1[0],complejo1[1]);
 		Complejo c2 = new Complejo(complejo2[0],complejo2[1]);
 		if (c2.equals(new Complejo(0,0))) {
@@ -121,7 +122,7 @@ public class Calculadora {
 	 * @return un numero complejo con la division de complejo1 y complejo2
 	 * @throws CalculadoraException cuando el divisor es 0
 	 */
-	public Complejo division(Complejo c1, Complejo c2) throws CalculadoraException {
+	public static Complejo division(Complejo c1, Complejo c2) throws CalculadoraException {
 		if (c2.equals(new Complejo(0,0))) {
 			throw new CalculadoraException(CalculadoraException.DIVISION_CERO);
 		}	
@@ -138,7 +139,7 @@ public class Calculadora {
 	 * @param com1 las componentes rectangulares del numero
 	 * @return un double con el valor del modulo
 	 */
-	public double modulo(int[] com1){
+	public static double modulo(int[] com1){
 		Complejo c1 = new Complejo(com1[0],com1[1]);
 		return c1.getModulo();
 	}
@@ -148,7 +149,7 @@ public class Calculadora {
 	 * @param c1 el numero complejo
 	 * @return un double con el valor del modulo
 	 */
-	public double modulo(Complejo c1){
+	public static double modulo(Complejo c1){
 		return c1.getModulo();
 	}
 	
@@ -157,7 +158,7 @@ public class Calculadora {
 	 * @param com1 las componentes rectangulares del numero
 	 * @return un Complejo con los valores del conjuado
 	 */
-	public Complejo conjugado(int[] com1){
+	public static Complejo conjugado(int[] com1){
 		Complejo c1 = new Complejo(com1[0],com1[1]);
 		return c1.conjugado();
 	}
@@ -167,7 +168,7 @@ public class Calculadora {
 	 * @param c1 el numero complejo
 	 * @return un Complejo con los valores del conjuado
 	 */
-	public Complejo conjugado(Complejo c1){
+	public static Complejo conjugado(Complejo c1){
 		return c1.conjugado();
 	}
 	
@@ -176,7 +177,7 @@ public class Calculadora {
 	 * @param com1 las componentes rectangulares del numero
 	 * @return un vector de double con las componentes polares
 	 */
-	public double[] recPol(int[] com1) {
+	public static double[] recPol(int[] com1) {
 		Complejo c1 = new Complejo(com1[0],com1[1]);
 		double [] pol = new double[2];
 		pol[0] =  c1.getModulo();
@@ -189,7 +190,7 @@ public class Calculadora {
 	 * @param c1 el numero complejo
 	 * @return un vector de double con las componentes polares
 	 */
-	public double[] recPol(Complejo c1) {
+	public static double[] recPol(Complejo c1) {
 		double [] pol = new double[2];
 		pol[0] =  c1.getModulo();
 		pol[1] = c1.getFase();
@@ -201,7 +202,7 @@ public class Calculadora {
 	 * @param com1 las componentes polares del numero
 	 * @return un vector de double con las componentes rectangulares
 	 */
-	public double[] polRec(int[] com1) {
+	public static double[] polRec(int[] com1) {
 		Complejo c1 = new Complejo(com1[0],com1[1],0);
 		double [] rec = new double[2];
 		rec[0] =  c1.getReal();
@@ -214,7 +215,7 @@ public class Calculadora {
 	 * @param c1 el numero complejo
 	 * @return un vector de double con las componentes rectangulares
 	 */
-	public double[] polRec(Complejo c1) {
+	public static double[] polRec(Complejo c1) {
 		double [] rec = new double[2];
 		rec[0] =  c1.getReal();
 		rec[1] = c1.getImaginaria();
@@ -226,27 +227,11 @@ public class Calculadora {
 	 * @param com1 las componentes polares del numero
 	 * @return la fase del numero
 	 */
-	public double fase(int[] com1) {
+	public static double fase(int[] com1) {
 		Complejo c1 = new Complejo(com1[0],com1[1]);
 		double fase;
 		fase = c1.getFase();
 		return fase;
-	}
-	
-	/**
-	 * Calcula la fase de un numero complejo
-	 * @param com1 el numero complejo
-	 * @return la fase del numero
-	 */
-	public double fase(Complejo c1) {
-		return c1.getFase();
-	}
-	
-	public Matriz sumaMatriz(Matriz m1, Matriz m2) {
-		if(m1.getNumeros().length!=m2.getNumeros().length || m1.getNumeros()[0].length!=m2.getNumeros()[0].length ) {
-			throw CalculadoraException(CalculadoraException);
-		}
-		return null;
 	}
 	
 }
