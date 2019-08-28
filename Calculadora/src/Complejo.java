@@ -107,8 +107,13 @@ public class Complejo {
 			}
 		}
 		if (imaginaria != 0) {
-			s += " " +Double.toString(imaginaria)+"i)";
+			s += " " +Double.toString(imaginaria)+"i";
 		}
+		if (real == 0 && imaginaria == 0) {
+			s += "0";
+		}
+		
+		s += ")";
 		return s;
 	}
 	

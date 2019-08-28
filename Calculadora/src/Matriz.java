@@ -3,16 +3,40 @@ import java.util.Arrays;
 public class Matriz {
 	private Complejo[][] numeros;
 	
-	public Matriz(int filas, int columnas,Complejo[] numeros){
+	/**
+	 * Crea la matriz partiendo del numero de filas, columnas y un arreglo de los numeros complejos.
+	 * @param filas de la matriz
+	 * @param columnas de la matriz
+	 * @param numeros de la matriz
+	 * @throws CalculadoraException cuando la cantidad de numeros no llena la matriz 
+	 */
+	public Matriz(int filas, int columnas,Complejo[] numeros) throws CalculadoraException{
+		if(numeros.length < filas*columnas) {
+			throw new CalculadoraException(CalculadoraException.FALTAN_NUMEROS);
+		}
 		this.numeros = new Complejo[filas][columnas];
 		añadirNumeros(numeros);
 	}
 	
+	/**
+	 * Crea una matriz dado un arreglo de numeros complejos
+	 * @param numeros complejos de la matriz
+	 */
 	public Matriz(Complejo[][] numeros){
 		this.numeros = numeros;
 	}
 	
-	public Matriz(int filas, int columnas,int[][] numeros){
+	/**
+	 * Crea una matriz partiendo del numero de filas, columnas y un arreglo de los numeros en coordenadas.
+	 * @param filas de la matriz
+	 * @param columnas de la matriz
+	 * @param numeros de la matriz
+	 * @throws CalculadoraException cuando la cantidad de numeros no llena la matriz 
+	 */
+	public Matriz(int filas, int columnas,double[][] numeros) throws CalculadoraException{
+		if(numeros.length < filas*columnas) {
+			throw new CalculadoraException(CalculadoraException.FALTAN_NUMEROS);
+		}
 		this.numeros = new Complejo[filas][columnas];
 		añadirNumeros(crearComplejos(numeros));
 	}
@@ -27,7 +51,7 @@ public class Matriz {
 		}
 	}
 	
-	private Complejo[] crearComplejos(int[][] numeros) {
+	private Complejo[] crearComplejos(double[][] numeros) {
 		Complejo[] complejos = new Complejo[numeros.length];
 		for (int i  = 0; i < numeros.length;i++) {
 			complejos[i] = new Complejo(numeros[i][0],numeros[i][1]);
@@ -37,6 +61,30 @@ public class Matriz {
 	
 	public Complejo[][] getNumeros(){
 		return numeros;
+	}
+	public boolean isVector() {
+		return numeros.length == 1 || numeros[0].length == 1;
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.deepHashCode(numeros);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Matriz other = (Matriz) obj;
+		if (!Arrays.deepEquals(numeros, other.numeros))
+			return false;
+		return true;
 	}
 
 	@Override
