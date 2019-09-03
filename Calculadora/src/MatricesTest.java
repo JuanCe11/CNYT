@@ -258,4 +258,104 @@ class MatricesTest {
 		}
 	}
 	
+	@Test
+	public void deberiaMatrizSobreVector() {
+		double[][] numeros ={{1,0},{1,0},{1,0},{1,0},{1,0},{0,1}};
+		double[][] numeros2 ={{0,1},{1,0}};
+		try {
+			Matriz m = new Matriz(3,2,numeros);
+			Matriz m2 = new Matriz(2,1,numeros2);
+			double[][] respuesta = {{1,1},{1,1},{0,2}};
+			Assert.assertEquals(CalculadoraMatrices.matrizPorVector(m, m2),new Matriz(3,1,respuesta));
+		} catch (CalculadoraException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void deberiaMatrizSobreVector2() {
+		double[][] numeros ={{0,0},{0,-2},{0,2},{0,0}};
+		double[][] numeros2 ={{0,1},{1,0}};
+		try {
+			Matriz m = new Matriz(2,2,numeros);
+			Matriz m2 = new Matriz(2,1,numeros2);
+			double[][] respuesta = {{0,-2},{-2,0}};
+			Assert.assertEquals(CalculadoraMatrices.matrizPorVector(m, m2),new Matriz(2,1,respuesta));
+		} catch (CalculadoraException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void deberiaHermitania() {
+		double[][] numeros ={{2,0},{3,-1},{3,1},{-1,0}};
+		try {
+			Matriz m = new Matriz(2,2,numeros);
+			Assert.assertTrue(CalculadoraMatrices.esHermitania(m));
+		} catch (CalculadoraException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void deberiaMatrizporMatriz() {
+		double[][] numeros ={{2,0},{3,-1},{3,1},{-1,0}};
+		double[][] numeros2 ={{1,0},{1,0},{1,0},{0,1}};
+		try {
+			Matriz m = new Matriz(2,2,numeros);
+			Matriz m2 = new Matriz(2,2,numeros2);
+			double[][] respuesta = {{5,-1},{3,3},{2,1},{3,0}};
+			Assert.assertEquals(CalculadoraMatrices.matrizPorMatriz(m, m2),new Matriz(2,2,respuesta));
+		} catch (CalculadoraException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void deberiaMatrizporMatriz1() {
+		double[][] numeros ={{0,0},{0,-2},{0,2},{0,0}};
+		double[][] numeros2 ={{1,0},{1,0},{1,0},{0,1}};
+		try {
+			Matriz m = new Matriz(2,2,numeros);
+			Matriz m2 = new Matriz(2,2,numeros2);
+			double[][] respuesta = {{0,-2},{2,0},{0,2},{0,2}};
+			Assert.assertEquals(CalculadoraMatrices.matrizPorMatriz(m, m2),new Matriz(2,2,respuesta));
+		} catch (CalculadoraException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void deberiaMatrizpoIdentidad() {
+		double[][] numeros ={{0,0},{0,-2},{0,2},{0,0}};
+		try {
+			Matriz m = new Matriz(2,2,numeros);
+			double[][] respuesta = {{1,0},{0,0},{0,0},{1,0}};
+			Assert.assertEquals(CalculadoraMatrices.identidad(m),new Matriz(2,2,respuesta));
+		} catch (CalculadoraException e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void deberiaMatrizpoIdentidad2() {
+		double[][] numeros ={{0,0},{0,-2},{0,2},{0,0},{0,2},{0,0},{0,2},{0,0},{0,2}};
+		try {
+			Matriz m = new Matriz(3,3,numeros);
+			double[][] respuesta = {{1,0},{0,0},{0,0},{0,0},{1,0},{0,0},{0,0},{0,0},{1,0}};
+			Assert.assertEquals(CalculadoraMatrices.identidad(m),new Matriz(3,3,respuesta));
+		} catch (CalculadoraException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void deberiaMatrizpoUnitaria() {
+		double[][] numeros ={{0,1},{0,0},{0,0},{0,1}};
+		try {
+			Matriz m = new Matriz(2,2,numeros);
+			Assert.assertTrue(CalculadoraMatrices.esUnitaria(m));
+		} catch (CalculadoraException e) {
+			e.printStackTrace();
+		}
+	}
 }
