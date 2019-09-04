@@ -134,18 +134,6 @@ class MatricesTest {
 		}
 	}
 	
-	@Test
-	public void deberiaMultiplicarPorEscalarVector() {
-		double[][] numeros ={{0,0},{2,2},{3,3},{4,4}};
-		double escalar = 10;
-		try {
-			Matriz m = new Matriz(4,1,numeros);
-			double[][] respuesta = {{0,0},{20,20},{30,30},{40,40}};
-			Assert.assertEquals(CalculadoraMatrices.multiplicacionEscalarVector(escalar, m),new Matriz(4,1,respuesta));
-		} catch (CalculadoraException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	@Test
 	public void deberiaMultiplicarPorEscalarVector1() {
@@ -349,7 +337,7 @@ class MatricesTest {
 	}
 	
 	@Test
-	public void deberiaMatrizpoUnitaria() {
+	public void deberiaMatrizUnitaria() {
 		double[][] numeros ={{0,1},{0,0},{0,0},{0,1}};
 		try {
 			Matriz m = new Matriz(2,2,numeros);

@@ -145,6 +145,18 @@ public class CalculadoraMatrices {
 		return new Matriz(respuesta);
 	}
 	
+	public static Complejo productoInterno(Matriz m1, Matriz m2) throws CalculadoraException {
+		return CalculadoraMatrices.matrizPorMatriz(CalculadoraMatrices.matrizAdjunta(m1),m2).getNumeros()[0][0];
+	}
+	
+	public static double normaDeUnVector(Matriz m1) throws CalculadoraException {
+		return Math.sqrt(CalculadoraMatrices.productoInterno(m1, m1).getReal());
+	}
+	
+	public static double distanciaEntreVectores(Matriz m1,Matriz m2) throws CalculadoraException {
+		return CalculadoraMatrices.normaDeUnVector(CalculadoraMatrices.sumaVectores(m1, CalculadoraMatrices.inversaVectores(m2)));
+	}
+	
 	public static Matriz matrizPorMatriz(Matriz m1, Matriz m2) throws CalculadoraException {
 		if(m1.getNumeros()[0].length != m2.getNumeros().length) {
 			throw new CalculadoraException(CalculadoraException.SUMA_MATRICES);
@@ -183,7 +195,28 @@ public class CalculadoraMatrices {
 		return new Matriz(identidad);
 	}
 	
+	private static Matriz redondear(Matriz m) {
+		Complejo redondear[][] = new Complejo[m.getNumeros().length][m.getNumeros()[0].length];
+		for (int i = 0; i < redondear.length; i++) {
+			for (int j = 0; j < redondear[0].length; j++) {
+				redondear[i][j] = Calculadora.redondear(m.getNumeros()[i][j]);
+			}
+		}
+		return new Matriz(redondear);
+	}
+	
 	public static boolean esUnitaria(Matriz m) throws CalculadoraException {
-		return CalculadoraMatrices.matrizPorMatriz(m, CalculadoraMatrices.matrizAdjunta(m)).equals(CalculadoraMatrices.identidad(m));
+		return CalculadoraMatrices.redondear(CalculadoraMatrices.matrizPorMatriz(m, CalculadoraMatrices.matrizAdjunta(m))).equals(CalculadoraMatrices.identidad(m));
+	}
+	
+	public static Matriz productoTensorial(Matriz m,Matriz m2) {
+		Complejo[][] respuesta = new Complejo[m.getNumeros().length * m2.getNumeros().length][m.getNumeros()[0].length * m2.getNumeros()[0].length];
+		int p = m2.getNumeros().length,q = m2.getNumeros()[0].length;
+		for (int i = 0; i < respuesta.length; i++) {
+			for (int j = 0; j < respuesta[0].length; j++) {
+				respuesta[i][j] = Calculadora.multiplicacion(m.getNumeros()[i/p][j/q],m2.getNumeros()[i%p][j%q]);
+			}	
+		}
+		return new Matriz(respuesta);
 	}
 }

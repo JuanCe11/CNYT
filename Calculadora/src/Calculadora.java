@@ -74,10 +74,11 @@ public class Calculadora {
 	public static Complejo multiplicacion(int[] complejo1, int[] complejo2){
 		Complejo c1 = new Complejo(complejo1[0],complejo1[1]);
 		Complejo c2 = new Complejo(complejo2[0],complejo2[1]);
-		double real = (c1.getReal() * c2.getReal()) + (-1 * c1.getImaginaria() * c2.getImaginaria());
+		double real = c1.getReal() * c2.getReal() + (-1 * c1.getImaginaria() * c2.getImaginaria());
 		double imaginaria = (c1.getReal() * c2.getImaginaria()) + (c1.getImaginaria() * c2.getReal());
 		Complejo res = new Complejo(real, imaginaria);
-		return res;	
+		return res;
+		//double parteReal = ((double)Math.round((a.getParteReal()*b.getParteReal()) * 100d) / 100d)  -  ((double)Math.round((a.getParteImaginaria()*b.getParteImaginaria()) * 100d) / 100d);
 	}
 	
 	/**
@@ -232,6 +233,10 @@ public class Calculadora {
 		double fase;
 		fase = c1.getFase();
 		return fase;
+	}
+	
+	public static Complejo redondear(Complejo complejo) {
+		return new Complejo(Math.round(complejo.getReal()),Math.round(complejo.getImaginaria()));
 	}
 	
 }
