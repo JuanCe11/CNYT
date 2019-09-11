@@ -150,7 +150,7 @@ class MatricesTest {
 	@Test
 	public void deberiaMultiplicarPorEscalar() {
 		double[][] numeros ={{0,0},{2,2},{3,3},{4,4}};
-		double escalar = 10;
+		double[] escalar = {10,0};
 		try {
 			Matriz m = new Matriz(2,2,numeros);
 			double[][] respuesta = {{0,0},{20,20},{30,30},{40,40}};

@@ -9,6 +9,7 @@ public class CalculadoraException extends Exception {
 	public static final String FALTAN_NUMEROS = "El arreglo ingresado no tiene los numeros suficientes.";
 	public static final String NO_ES_VECTOR = "No se tiene(n) vector(es).";
 	public static final String NO_ES_CUADRADA = "La matriz no es cuadrada.";
+	public static final String MATRIZ_INVALIDA = "La matriz del sistema no es válida.";
 	
 	public CalculadoraException(String message) {
 		super(message);

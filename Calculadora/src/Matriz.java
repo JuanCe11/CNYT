@@ -41,6 +41,10 @@ public class Matriz {
 		añadirNumeros(crearComplejos(numeros));
 	}
 
+	/**
+	 * Añade los numeros a la matriz
+	 * @param numeros numeros para añadir
+	 */
 	private void añadirNumeros(Complejo[] numeros) {
 		int contador = 0;
 		for (int i  = 0; i < this.numeros.length;i++) {
@@ -51,6 +55,11 @@ public class Matriz {
 		}
 	}
 	
+	/**
+	 * Crea un arreglo de complejos dados sus partes reales e imaginarias 
+	 * @param numeros las partes reales e imaginarias de los numeros
+	 * @return el arrego de los numeros complejos .
+	 */
 	private Complejo[] crearComplejos(double[][] numeros) {
 		Complejo[] complejos = new Complejo[numeros.length];
 		for (int i  = 0; i < numeros.length;i++) {
@@ -59,9 +68,18 @@ public class Matriz {
 		return complejos;
 	}
 	
+	/**
+	 * Da los numeros de la matriz 
+	 * @return un arreglo de los numero que tiene la matriz
+	 */
 	public Complejo[][] getNumeros(){
 		return numeros;
 	}
+	
+	/**
+	 * Dice si la matriz es un vector 
+	 * @return si la matriz es un vector
+	 */
 	public boolean isVector() {
 		return numeros.length == 1 || numeros[0].length == 1;
 	}
