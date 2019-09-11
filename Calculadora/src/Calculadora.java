@@ -1,5 +1,3 @@
-import org.junit.experimental.theories.FromDataPoints;
-
 public class Calculadora {
 	private static Calculadora calculadora = null;
 	

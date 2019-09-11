@@ -1,6 +1,3 @@
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -89,9 +86,8 @@ class NumerosComplejosTest {
 	public void deberiaDividir4() {
 		int[] c1 = {-3,-1};
 		int[] c2 = {0,0};		
-		Complejo respuesta;
 		try {
-			respuesta = Calculadora.division(c1, c2);
+			Calculadora.division(c1, c2);
 		}catch(CalculadoraException e) {
 			Assert.assertEquals(e.getMessage(),CalculadoraException.DIVISION_CERO);
 		}
