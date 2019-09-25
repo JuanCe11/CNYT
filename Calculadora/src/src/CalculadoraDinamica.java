@@ -9,7 +9,7 @@ public class CalculadoraDinamica {
 	 * @param estadoInicial el estado incial del sistema 
 	 * @param clicks cantidad de estados a avanzar
 	 * @return una Respuesta que contiene la validacion de la matriz, la matriz potencia del sistema y el estado final del sistema 
-	 * @throws CalculadoraException
+	 * @throws CalculadoraException cualquier excepcion en los calculos del estado final
 	 */
 	public static Respuesta calcularEstado(int tipoDinamica,Matriz dinamica, Matriz estadoInicial, int clicks) throws CalculadoraException {
 		if (tipoDinamica < 0 || tipoDinamica>2) {
@@ -183,35 +183,61 @@ public class CalculadoraDinamica {
 	}
 	
 	/**
-	 * 
-	 * @param rendijas
-	 * @param blancosPorRendija
-	 * @param probabilidades
-	 * @return
+	 * Da una respuesta con la potencia de la matriz y el estado final del sistema despues de un click 
+	 * @param rendijas cantidad de rendijas en el sistema 
+	 * @param blancosPared blancos que hay detras de cada pared 
+	 * @param probabilidades vector con las probabilidades de llegar a los blancos
+	 * @return la potencia de la matriz y el estado final del sistema despues de un click 
+	 * @throws CalculadoraException cualquier excepcion en los calculos del estado final
 	 */
-	public static Respuesta experimentoRendijas(int rendijas, int blancosPorRendija,double[] probabilidades) {
-		int minimoBlancos = (rendijas*blancosPorRendija) - (blancosPorRendija/2)*(rendijas-1);
-		Matriz dinamica = new Matriz(valoresBlancos(valoresRendijas(mapACero(new Complejo[rendijas+minimoBlancos+1][rendijas+minimoBlancos+1]),rendijas),probabilidades,rendijas,blancosPorRendija));
-				
-		return null;		
+	public static Respuesta experimentoRendijas(int rendijas, int blancosPared,double[][] probabilidades) throws CalculadoraException {
+		Matriz dinamica = new Matriz(valoresBlancos(valoresRendijas(mapACero(new Complejo[rendijas*2 + blancosPared*(rendijas+1)+1][rendijas*2 + blancosPared*(rendijas+1)+1]),rendijas),probabilidades,rendijas,blancosPared));
+		return new Respuesta(true,calcularPotencia(dinamica,1),calcularEstadoFinal(dinamica,estadoInicial(rendijas*2 + blancosPared*(rendijas+1)+1),1));		
 	}
 	
-	private static Complejo[][] valoresBlancos(Complejo[][] dinamica, double[] probabilidades,int rendijas,int blancosPorRendija) {
-		int posicion = rendijas+1;
+	/**
+	 * Da el estado inicial del sistema dependidendo de la longitud de la matriz del sistema 
+	 * @param logitud la longitud de la matriz del sistema 
+	 * @return el estado inicial del sistema
+	 */
+	private static Matriz estadoInicial(int logitud) {
+		Complejo[][] estadoInicial = mapACero(new Complejo[logitud][1]);
+		estadoInicial[0][0] = new Complejo(1,0);
+		return new Matriz(estadoInicial);
+	}
+	
+	/**
+	 * Asigna los valores de la probabilidad de las rendijas a los blancos
+	 * @param dinamica el arreglo de la matriz del sistema
+	 * @param probabilidades vector con las probabilidades de llegar a los blancos
+	 * @param rendijas cantidad de rendijas en el sistema 
+	 * @param blancosPared blancos que hay detras de cada pared 
+	 * @return el arreglo con los valores de la probabilidad de las rendijas a los blancos
+	 */
+	private static Complejo[][] valoresBlancos(Complejo[][] dinamica, double[][] probabilidades,int rendijas,int blancosPared) {
+		int posicion = rendijas+1,blancosPorRendija = blancosPared*2 + 1,probabilidad = 0;
 		for (int i = 0; i < rendijas; i++) {
 			for (int j = 0; j < blancosPorRendija  ; j++) {
-				dinamica[posicion+j][i+1] = new Complejo(probabilidades[j],0);	
+				dinamica[posicion+j][i+1] = new Complejo(probabilidades[probabilidad][0],probabilidades[probabilidad][1]);
+				probabilidad++;
 			}			
-			posicion += blancosPorRendija - (blancosPorRendija/2)*(rendijas-1);
+			probabilidad = 0;
+			posicion = rendijas + 1 + blancosPorRendija - 1;
 		}	
 		return dinamica;
 	}
-
+	
+	/**
+	 * Asigna los valores de la probabilidad a las rendijas
+	 * @param dinamica el arreglo de la matriz del sistema
+	 * @param rendijas cantidad de rendijas del sistema 
+	 * @return el arreglo con los valores de la probabilidad a las rendijas
+	 */
 	private static Complejo[][] valoresRendijas(Complejo[][] dinamica,int rendijas) {
 		for (int i = 0; i < rendijas; i++) {
 			dinamica[i+1][0] = new Complejo((double)1/rendijas,0); 			
 		}
-		return null;
+		return dinamica;
 	}
 
 	/**
