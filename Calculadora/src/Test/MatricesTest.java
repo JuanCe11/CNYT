@@ -1,11 +1,11 @@
-package Test;
+package test;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import src.Calculadora;
-import src.CalculadoraException;
-import src.CalculadoraMatrices;
-import src.Matriz;
+import aplicacion.Calculadora;
+import aplicacion.CalculadoraException;
+import aplicacion.CalculadoraMatrices;
+import aplicacion.Matriz;
 
 public class MatricesTest {
 

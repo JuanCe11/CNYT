@@ -1,4 +1,4 @@
-package src;
+package aplicacion;
 
 public class Complejo {
 	private double real;

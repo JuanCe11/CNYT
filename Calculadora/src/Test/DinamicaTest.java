@@ -1,10 +1,10 @@
-package Test;
+package test;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import src.CalculadoraDinamica;
-import src.CalculadoraException;
-import src.Matriz;
+import aplicacion.CalculadoraDinamica;
+import aplicacion.CalculadoraException;
+import aplicacion.Matriz;
 
 public class DinamicaTest {
 	

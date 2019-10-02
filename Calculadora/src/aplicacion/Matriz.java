@@ -1,4 +1,4 @@
-package src;
+package aplicacion;
 import java.util.Arrays;
 
 public class Matriz {

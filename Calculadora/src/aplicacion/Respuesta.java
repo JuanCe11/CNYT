@@ -1,4 +1,10 @@
-package src;
+package aplicacion;
+
+import org.jfree.*;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class Respuesta {
 	private boolean matrizValida;
@@ -8,9 +14,14 @@ public class Respuesta {
 	public Respuesta(boolean matrizValida,Matriz potencia, Matriz estadoFinal) {
 		this.matrizValida = matrizValida;
 		this.potencia = potencia;
-		this.estadoFinal = estadoFinal;;		
+		this.estadoFinal = estadoFinal;
 	}
 	
+	public void imprimirEstadoFinal() {
+		Grafica g = new Grafica();
+		g.init(estadoFinal);
+	}
+
 	public boolean isMatrizValida() {
 		return matrizValida;
 	}

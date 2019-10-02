@@ -1,4 +1,4 @@
-package src;
+package aplicacion;
 
 public class CalculadoraDinamica {
 	
@@ -154,7 +154,7 @@ public class CalculadoraDinamica {
 	 * @return Una matriz con el estado final del sistema
 	 * @throws CalculadoraException cuando el estado inicial no es un vector o que la matriz del sistema sea invalida.
 	 */
-	public static Matriz sistemaDinamicoDeterministaconEnsamble(Matriz m1, Matriz m2,Matriz estadoInicial, int clicks) throws CalculadoraException {
+	public static Matriz sistemaDinamicoconEnsamble(Matriz m1, Matriz m2,Matriz estadoInicial, int clicks) throws CalculadoraException {
 		if (m1.getNumeros().length != m1.getNumeros()[0].length||m2.getNumeros().length != m2.getNumeros()[0].length) {
 			throw new CalculadoraException(CalculadoraException.NO_ES_CUADRADA);		
 		}
@@ -175,11 +175,11 @@ public class CalculadoraDinamica {
 	 * @return Una matriz con el estado final del sistema
 	 * @throws CalculadoraException Caundo los estados no corresponden a las matrices y todas las excepciones de calcular los estados 
 	 */
-	public static Matriz sistemaDinamicoDeterministaconEnsamble(Matriz m1, Matriz m2,Matriz estadoInicial1,Matriz estadoInicial2, int clicks) throws CalculadoraException {
+	public static Matriz sistemaDinamicoconEnsamble(Matriz m1, Matriz m2,Matriz estadoInicial1,Matriz estadoInicial2, int clicks) throws CalculadoraException {
 		if(estadoInicial1.getNumeros().length != m1.getNumeros().length||estadoInicial2.getNumeros().length != m2.getNumeros().length) {
 			throw new CalculadoraException(CalculadoraException.IMPOSIBLE_CALCULAR+"Estado inicial no corresponde al sistema.");
 		}
-		return sistemaDinamicoDeterministaconEnsamble(m1,m2,CalculadoraMatrices.productoTensorial(estadoInicial1, estadoInicial2), clicks);
+		return sistemaDinamicoconEnsamble(m1,m2,CalculadoraMatrices.productoTensorial(estadoInicial1, estadoInicial2), clicks);
 	}
 	
 	/**
@@ -191,10 +191,18 @@ public class CalculadoraDinamica {
 	 * @throws CalculadoraException cualquier excepcion en los calculos del estado final
 	 */
 	public static Respuesta experimentoRendijas(int rendijas, int blancosPared,double[][] probabilidades) throws CalculadoraException {
-		Matriz dinamica = new Matriz(valoresBlancos(valoresRendijas(mapACero(new Complejo[rendijas*2 + blancosPared*(rendijas+1)+1][rendijas*2 + blancosPared*(rendijas+1)+1]),rendijas),probabilidades,rendijas,blancosPared));
-		return new Respuesta(true,calcularPotencia(dinamica,1),calcularEstadoFinal(dinamica,estadoInicial(rendijas*2 + blancosPared*(rendijas+1)+1),1));		
+		Matriz dinamica = new Matriz(valoresBlancos(quedarseEnBlanco(valoresRendijas(mapACero(new Complejo[rendijas*2 + blancosPared*(rendijas+1)+1][rendijas*2 + blancosPared*(rendijas+1)+1]),rendijas),rendijas),probabilidades,rendijas,blancosPared));
+		return new Respuesta(true,calcularPotencia(dinamica,1),convertirCuanticoaProbabilistico(calcularEstadoFinal(dinamica,estadoInicial(rendijas*2 + blancosPared*(rendijas+1)+1),2)));	
 	}
 	
+	private static Matriz convertirCuanticoaProbabilistico(Matriz estadoFinal) {
+		Complejo[][] probabilidades = new Complejo[estadoFinal.getNumeros().length][1];
+		for (int i = 0; i < estadoFinal.getNumeros().length; i++) {
+			probabilidades[i][0] = new Complejo(Math.pow(estadoFinal.getNumeros()[i][0].getModulo(),2),0);
+		}
+		return new Matriz(probabilidades);
+	}
+
 	/**
 	 * Da el estado inicial del sistema dependidendo de la longitud de la matriz del sistema 
 	 * @param logitud la longitud de la matriz del sistema 
@@ -205,6 +213,20 @@ public class CalculadoraDinamica {
 		estadoInicial[0][0] = new Complejo(1,0);
 		return new Matriz(estadoInicial);
 	}
+	
+	/**
+	 * Asigna los valores de probabilidad de quedarse en el banco.
+	 * @param dinamica el arreglo de la matriz del sistema
+	 * @param rendijas cantidad de rendijas en el sistema 
+	 * @returnel arreglo con los valores de la probabilidad de quedarse en el banco.
+	 */
+	private static Complejo[][] quedarseEnBlanco(Complejo[][] dinamica,int rendijas) {
+		for (int i = rendijas+1; i < dinamica.length; i++) {
+			dinamica[i][i] = new Complejo(1,0);
+		}
+		return dinamica;
+	}
+	
 	
 	/**
 	 * Asigna los valores de la probabilidad de las rendijas a los blancos
@@ -218,12 +240,13 @@ public class CalculadoraDinamica {
 		int posicion = rendijas+1,blancosPorRendija = blancosPared*2 + 1,probabilidad = 0;
 		for (int i = 0; i < rendijas; i++) {
 			for (int j = 0; j < blancosPorRendija  ; j++) {
-				dinamica[posicion+j][i+1] = new Complejo(probabilidades[probabilidad][0],probabilidades[probabilidad][1]);
+				dinamica[posicion][i+1] = new Complejo(probabilidades[probabilidad][0],probabilidades[probabilidad][1]);
 				probabilidad++;
+				posicion++;
 			}			
 			probabilidad = 0;
-			posicion = rendijas + 1 + blancosPorRendija - 1;
-		}	
+			posicion -= blancosPared;
+		}
 		return dinamica;
 	}
 	
@@ -235,7 +258,7 @@ public class CalculadoraDinamica {
 	 */
 	private static Complejo[][] valoresRendijas(Complejo[][] dinamica,int rendijas) {
 		for (int i = 0; i < rendijas; i++) {
-			dinamica[i+1][0] = new Complejo((double)1/rendijas,0); 			
+			dinamica[i+1][0] = new Complejo((double)1/Math.sqrt(rendijas),0); 			
 		}
 		return dinamica;
 	}
@@ -247,7 +270,7 @@ public class CalculadoraDinamica {
 	 */
 	private static Complejo[][] mapACero(Complejo[][] dinamica) {
 		for (int i = 0; i < dinamica.length; i++) {
-			for (int j = 0; j < dinamica.length; j++) {
+			for (int j = 0; j < dinamica[0].length; j++) {
 				dinamica[i][j] = new Complejo(0,0);
 			}
 		}

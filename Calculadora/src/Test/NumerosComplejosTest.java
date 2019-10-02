@@ -1,10 +1,10 @@
-package Test;
+package test;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import src.Calculadora;
-import src.CalculadoraException;
-import src.Complejo;
+import aplicacion.Calculadora;
+import aplicacion.CalculadoraException;
+import aplicacion.Complejo;
 
 public class NumerosComplejosTest {
 	
