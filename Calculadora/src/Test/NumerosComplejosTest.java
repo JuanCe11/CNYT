@@ -2,9 +2,7 @@ package test;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import aplicacion.Calculadora;
-import aplicacion.CalculadoraException;
-import aplicacion.Complejo;
+import aplicacion.*;
 
 public class NumerosComplejosTest {
 	

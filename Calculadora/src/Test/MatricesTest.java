@@ -2,10 +2,7 @@ package test;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import aplicacion.Calculadora;
-import aplicacion.CalculadoraException;
-import aplicacion.CalculadoraMatrices;
-import aplicacion.Matriz;
+import aplicacion.*;
 
 public class MatricesTest {
 

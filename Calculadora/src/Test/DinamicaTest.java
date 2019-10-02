@@ -2,9 +2,7 @@ package test;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import aplicacion.CalculadoraDinamica;
-import aplicacion.CalculadoraException;
-import aplicacion.Matriz;
+import aplicacion.*;
 
 public class DinamicaTest {
 	

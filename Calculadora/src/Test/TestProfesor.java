@@ -2,10 +2,7 @@ package test;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import aplicacion.CalculadoraException;
-import aplicacion.CalculadoraMatrices;
-import aplicacion.Complejo;
-import aplicacion.Matriz;
+import aplicacion.*;
 
 public class TestProfesor {
 
