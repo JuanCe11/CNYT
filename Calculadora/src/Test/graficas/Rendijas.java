@@ -35,8 +35,8 @@ public class Rendijas {
 		for (int i = 0; i < estadoFinal.getNumeros().length; i++) {
 			data.setValue(estadoFinal.getNumeros()[i][0].getReal(),sitio1,Integer.toString(i));			
 		}
-		JFreeChart chart = ChartFactory.createBarChart("Clásica","Estados","Probabilidad",data);
-		ChartFrame frame = new ChartFrame("Clásica",chart);
+		JFreeChart chart = ChartFactory.createBarChart("Rendijas","Estados","Probabilidad",data);
+		ChartFrame frame = new ChartFrame("Rendijas",chart);
         frame.pack();
         frame.setVisible(true);
 	}

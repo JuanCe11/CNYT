@@ -39,3 +39,11 @@ Para este laboratorio se pedia realizar las siguientes funciones:
 3. Experimento de las múltiples rendijas cuántico.
 
 La solución a estos puntos se encuentra en el archivo CalculadoraDinamica.java y utiliza la clase Respuesta.java para dar algunas respuestas especificas. Las pruebas de esta parte estan en el archivo DinamicaTest.java y ProyectoTest.java. Adicional hay pruebas graficas de los sistemas en el paquete test.graficas en las clases: Clasica.java, Probabilisitico.java y Rendijas.java
+
+# Laboratorio 4
+Para este laboratorio se pedia realizar las siguientes funciones:
+1. Sistema de la posición de la partícula en una recta. Usuario especifica el número de puntos posibles y un vector ket y el sistema calcula las probabilidades de encontrar partícula en una posición. El sistema puede recibir dos vectores y calcular la probabilidad de transitar de el uno al otro después de hacer la observación
+2. Ahora con una matriz que describa un observable y un vector ket, el sistema revisa que la matriz sea hermitiana, y si lo es, calcula la media y la varianza del observable en el estado dado.
+3. El sistema calcula los valores propios del observable y la probabilidad de que el sistema transite a alguno de los vectores propios después de la observación.
+
+La solución a estos puntos se encuentra en el archivo CalculadoraCuantica.java. Las pruebas de esta parte estan en el archivo TeoriaCuanticaTest.java.
