@@ -2,6 +2,12 @@ package aplicacion;
 
 public class CalculadoraCuantica {
 	
+	/**
+	 * Calcula la probabilidad de pasar a cualquier estado, dado su estado inicial
+	 * @param estadoInicial Estado inicial del sistema
+	 * @return la probabilidad de estar en cualquier estado 
+	 * @throws CalculadoraException Cuando el estado inicial no es un vector
+	 */
 	public static double[] calcularProbabilidad(Matriz estadoInicial) throws CalculadoraException {
 		if (!estadoInicial.isVector()) {
 			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
@@ -13,6 +19,13 @@ public class CalculadoraCuantica {
 		return probabilidades;
 	}
 	
+	/**
+	 * Dados dos vectores (psi y phi) calcula la probabilidad (amplitud) de llegar de psi a phi
+	 * @param psi el estado inicial
+	 * @param phi el estado final 
+	 * @return la probabilidad de ir de psi a phi 
+	 * @throws CalculadoraException cuando los psi o phi no son vectores.
+	 */
 	public static Complejo calcularAmplitud(Matriz psi,Matriz phi) throws CalculadoraException {
 		if (!psi.isVector() || !phi.isVector()) {
 			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
@@ -24,6 +37,13 @@ public class CalculadoraCuantica {
 		return CalculadoraMatrices.productoInterno(phi,psi);
 	}
 	
+	/**
+	 * Calcula el valor esperado partiendo de un observador omega y un estado inicial psi 
+	 * @param omega el observador
+	 * @param psi el estado inicial 
+	 * @return el valor esperado 
+	 * @throws CalculadoraException cuando el estado inicial no es un vector u omega no es una matriz hermitania
+	 */
 	public static Complejo calcularValorEsperado(Matriz omega,Matriz psi) throws CalculadoraException {
 		if (!psi.isVector()) {
 			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
@@ -35,6 +55,13 @@ public class CalculadoraCuantica {
 		return CalculadoraMatrices.productoInterno(res,psi);
 	}
 	
+	/**
+	 * Calcula el la varianza partiendo de un observador omega y un estado inicial psi 
+	 * @param omega el observador
+	 * @param psi el estado inicial 
+	 * @return la varianza
+	 * @throws CalculadoraException cualquier excepcion al calcular el valor esperado
+	 */
 	public static Complejo calcularVarianza(Matriz omega,Matriz psi) throws CalculadoraException {
 		Matriz delta = delta(omega,psi);
 		return calcularValorEsperado(CalculadoraMatrices.matrizPorMatriz(delta, delta),psi);

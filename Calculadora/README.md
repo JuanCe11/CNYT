@@ -1,3 +1,7 @@
+# CNYT 
+### Autor: Juan Sebastian Gómez López
+En este repositorio se encuentran librerias para diversas operaciones cuanticas.
+
 # Laboratorio 1 
 Para este laboratorio se pedia realizar las siguientes funciones:
 1. Suma
@@ -7,7 +11,7 @@ Para este laboratorio se pedia realizar las siguientes funciones:
 5. Módulo
 6. Conjugado
 7. Conversión entre representaciones polar y cartesiano
-8. Retornar la fase de un número complejo.\
+8. Retornar la fase de un número complejo.
 
 
 Para darle solucion a estos problemas se utilizo el lenguaje de programacion de java. La solución de estos puntos se encuentran en los archivos Calculadora.java y Complejo.java. Las pruebas de esta parte estan en el archivo NumerosComplejosTest.java.
