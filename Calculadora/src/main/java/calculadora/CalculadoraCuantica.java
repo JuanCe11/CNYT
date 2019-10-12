@@ -1,0 +1,74 @@
+package main.java.calculadora;
+
+public class CalculadoraCuantica {
+	
+	/**
+	 * Calcula la probabilidad de pasar a cualquier estado, dado su estado inicial
+	 * @param estadoInicial Estado inicial del sistema
+	 * @return la probabilidad de estar en cualquier estado 
+	 * @throws CalculadoraException Cuando el estado inicial no es un vector
+	 */
+	public static double[] calcularProbabilidad(Matriz estadoInicial) throws CalculadoraException {
+		if (!estadoInicial.isVector()) {
+			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
+		}
+		double[] probabilidades = new double[estadoInicial.getNumeros().length];
+		for (int i = 0; i < estadoInicial.getNumeros().length; i++) {
+			probabilidades[i] = Math.pow(estadoInicial.getNumeros()[i][0].getModulo(),2)/Math.pow(CalculadoraMatrices.normaDeUnVector(estadoInicial),2);		
+		}		
+		return probabilidades;
+	}
+	
+	/**
+	 * Dados dos vectores (psi y phi) calcula la probabilidad (amplitud) de llegar de psi a phi
+	 * @param psi el estado inicial
+	 * @param phi el estado final 
+	 * @return la probabilidad de ir de psi a phi 
+	 * @throws CalculadoraException cuando los psi o phi no son vectores.
+	 */
+	public static Complejo calcularAmplitud(Matriz psi,Matriz phi) throws CalculadoraException {
+		if (!psi.isVector() || !phi.isVector()) {
+			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
+		}
+		double[] escalarPsi = {(double)1/CalculadoraMatrices.normaDeUnVector(psi),0};
+		psi = CalculadoraMatrices.multiplicacionEscalarMatriz(escalarPsi, psi);
+		double[] escalarPhi = {(double)1/CalculadoraMatrices.normaDeUnVector(phi),0};
+		psi = CalculadoraMatrices.multiplicacionEscalarMatriz(escalarPhi, psi);
+		return CalculadoraMatrices.productoInterno(phi,psi);
+	}
+	
+	/**
+	 * Calcula el valor esperado partiendo de un observador omega y un estado inicial psi 
+	 * @param omega el observador
+	 * @param psi el estado inicial 
+	 * @return el valor esperado 
+	 * @throws CalculadoraException cuando el estado inicial no es un vector u omega no es una matriz hermitania
+	 */
+	public static Complejo calcularValorEsperado(Matriz omega,Matriz psi) throws CalculadoraException {
+		if (!psi.isVector()) {
+			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
+		}
+		if (!CalculadoraMatrices.esHermitania(omega)) {
+			throw new CalculadoraException("La matriz no es hermitania");
+		}
+		Matriz res = CalculadoraMatrices.matrizPorMatriz(omega, psi);
+		return CalculadoraMatrices.productoInterno(res,psi);
+	}
+	
+	/**
+	 * Calcula el la varianza partiendo de un observador omega y un estado inicial psi 
+	 * @param omega el observador
+	 * @param psi el estado inicial 
+	 * @return la varianza
+	 * @throws CalculadoraException cualquier excepcion al calcular el valor esperado
+	 */
+	public static Complejo calcularVarianza(Matriz omega,Matriz psi) throws CalculadoraException {
+		Matriz delta = delta(omega,psi);
+		return calcularValorEsperado(CalculadoraMatrices.matrizPorMatriz(delta, delta),psi);
+	}
+
+	private static Matriz delta(Matriz omega, Matriz psi) throws CalculadoraException {
+		double[] valorEsperado = {calcularValorEsperado(omega,psi).getReal(),calcularValorEsperado(omega,psi).getImaginaria()},menosUno = {-1,0};
+		return CalculadoraMatrices.sumaMatriz(omega, CalculadoraMatrices.multiplicacionEscalarMatriz(menosUno,CalculadoraMatrices.multiplicacionEscalarMatriz(valorEsperado, CalculadoraMatrices.identidad(omega))));
+	}
+}
