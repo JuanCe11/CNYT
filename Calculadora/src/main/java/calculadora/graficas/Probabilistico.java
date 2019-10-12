@@ -1,9 +1,8 @@
-package test.java.calculadora.graficas;
+package main.java.calculadora.graficas;
 
 import org.jfree.chart.*;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.*;
-import org.junit.Assert;
 
 import main.java.calculadora.*;
 
@@ -26,7 +25,6 @@ public class Probabilistico {
 			graficar(CalculadoraDinamica.sistemaDinamicoconEnsamble(m, m2, m3, m4, 5));
 		} catch (CalculadoraException e) {
 			System.out.println("Algo fallo.");
-			Assert.fail();
 		}
 		
 	}

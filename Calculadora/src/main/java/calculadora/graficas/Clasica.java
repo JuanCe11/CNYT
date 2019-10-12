@@ -1,4 +1,4 @@
-package test.java.calculadora.graficas;
+package main.java.calculadora.graficas;
 
 import org.jfree.chart.*;
 import org.jfree.data.category.*;

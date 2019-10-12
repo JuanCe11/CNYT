@@ -1,8 +1,7 @@
-package test.java.calculadora.graficas;
+package main.java.calculadora.graficas;
 
 import org.jfree.chart.*;
 import org.jfree.data.category.*;
-import org.junit.Assert;
 
 import main.java.calculadora.*;
 
@@ -25,7 +24,6 @@ public class Rendijas {
 			graficar(res.getEstadoFinal());
 		} catch (CalculadoraException e) {
 			System.out.println("Algo fallo.");
-			Assert.fail();
 		}
 	}
 
