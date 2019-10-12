@@ -31,10 +31,10 @@ public class CalculadoraCuantica {
 			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
 		}
 		double[] escalarPsi = {(double)1/CalculadoraMatrices.normaDeUnVector(psi),0};
-		psi = CalculadoraMatrices.multiplicacionEscalarMatriz(escalarPsi, psi);
+		Matriz psiM = CalculadoraMatrices.multiplicacionEscalarMatriz(escalarPsi, psi);
 		double[] escalarPhi = {(double)1/CalculadoraMatrices.normaDeUnVector(phi),0};
-		psi = CalculadoraMatrices.multiplicacionEscalarMatriz(escalarPhi, psi);
-		return CalculadoraMatrices.productoInterno(phi,psi);
+		psiM = CalculadoraMatrices.multiplicacionEscalarMatriz(escalarPhi, psi);
+		return CalculadoraMatrices.productoInterno(phi,psiM);
 	}
 	
 	/**

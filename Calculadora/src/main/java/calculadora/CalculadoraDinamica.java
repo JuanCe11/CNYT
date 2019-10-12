@@ -46,7 +46,8 @@ public class CalculadoraDinamica {
 	 */
 	private static boolean validarClasico(Matriz m1) {
 		boolean valida = true;
-		Complejo zero = new Complejo(0,0), uno = new  Complejo(1.0,0);
+		Complejo zero = new Complejo(0,0);
+		Complejo uno = new  Complejo(1.0,0);
 		int cantidadUnos ; 
 		for (int i = 0; i < m1.getNumeros()[0].length; i++) {
 			cantidadUnos = 0;
@@ -66,7 +67,8 @@ public class CalculadoraDinamica {
 	 */
 	private static boolean validarProbabilistico(Matriz m1) {
 		boolean valida = true;
-		Complejo suma, uno = new  Complejo(1.0,0);
+		Complejo suma;
+		Complejo uno = new  Complejo(1.0,0);
 		for (int i = 0; i < m1.getNumeros().length; i++) {
 			suma = new Complejo(0,0);
 			for (int j = 0; j < m1.getNumeros()[0].length; j++) {
@@ -102,8 +104,9 @@ public class CalculadoraDinamica {
 	 * @throws CalculadoraException excepciones en el calculo de la multiplicacion
 	 */
 	private static Matriz calcularPotencia(Matriz dinamica, int potencia) throws CalculadoraException {
+		Matriz potenciaM = dinamica;
 		for (int i = 0; i < potencia; i++) {
-			dinamica = CalculadoraMatrices.matrizPorMatriz(dinamica, dinamica);
+			potenciaM = CalculadoraMatrices.matrizPorMatriz(potenciaM, potenciaM);
 		}
 		return dinamica;
 	} 
@@ -237,7 +240,9 @@ public class CalculadoraDinamica {
 	 * @return el arreglo con los valores de la probabilidad de las rendijas a los blancos
 	 */
 	private static Complejo[][] valoresBlancos(Complejo[][] dinamica, double[][] probabilidades,int rendijas,int blancosPared) {
-		int posicion = rendijas+1,blancosPorRendija = blancosPared*2 + 1,probabilidad = 0;
+		int posicion = rendijas+1;
+		int blancosPorRendija = blancosPared*2 + 1;
+		int probabilidad = 0;
 		for (int i = 0; i < rendijas; i++) {
 			for (int j = 0; j < blancosPorRendija  ; j++) {
 				dinamica[posicion][i+1] = new Complejo(probabilidades[probabilidad][0],probabilidades[probabilidad][1]);
