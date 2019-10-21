@@ -72,4 +72,33 @@ public class TeoriaCuanticaTest {
 			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
 		}
 	}
+	
+	
+	@Test
+	public void quiz6ValorEsperado() {
+		double[][] omega = {{0,0},{0,-1},{0,1},{0,0}};
+		double raiz = (double)1/Math.sqrt(2);
+		double[][] psi = {{raiz,0},{0,raiz}};
+		try {
+			Matriz psiM = new Matriz(2,1,psi);
+			Matriz omegaM = new Matriz(2,2,omega);
+			assertEquals(CalculadoraCuantica.calcularValorEsperado(omegaM, psiM),new Complejo(0.9999999999999998,0));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void quiz6Varianza() {
+		double[][] omega = {{0,0},{0,-1},{0,1},{0,0}};
+		double raiz = (double)1/Math.sqrt(2);
+		double[][] psi = {{raiz,0},{0,raiz}};
+		try {
+			Matriz psiM = new Matriz(2,1,psi);
+			Matriz omegaM = new Matriz(2,2,omega);
+			assertEquals(CalculadoraCuantica.calcularVarianza(omegaM, psiM),new Complejo(0,0));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
 }
