@@ -39,7 +39,7 @@ public class CalculadoraCuantica {
 	
 	/**
 	 * Calcula el valor esperado partiendo de un observador omega y un estado inicial psi 
-	 * @param omega el observador
+	 * @param omega el observable
 	 * @param psi el estado inicial 
 	 * @return el valor esperado 
 	 * @throws CalculadoraException cuando el estado inicial no es un vector u omega no es una matriz hermitania
@@ -51,8 +51,21 @@ public class CalculadoraCuantica {
 		if (!CalculadoraMatrices.esHermitania(omega)) {
 			throw new CalculadoraException("La matriz no es hermitania");
 		}
-		Matriz res = CalculadoraMatrices.matrizPorMatriz(omega, psi);
-		return CalculadoraMatrices.productoInterno(res,psi);
+		return calcular(omega,psi);
+	}
+	
+	/**
+	 * Realiza los caluculos del valor esperado suponinendo la validez de sus parametros
+	 * @param omega el observable
+	 * @param psi el estado inicial 
+ 	 * @return el valor esperado 
+	 * @throws CalculadoraException Excepciones de los caluculos en CalculadoraMatrices
+	 */
+	public static Complejo calcular(Matriz omega,Matriz psi) throws CalculadoraException {
+		double[] escalarPsi = {(double)1/CalculadoraMatrices.normaDeUnVector(psi),0};
+		Matriz psiNormalizado = CalculadoraMatrices.multiplicacionEscalarMatriz(escalarPsi, psi);
+		Matriz res = CalculadoraMatrices.matrizPorMatriz(omega, psiNormalizado);
+		return CalculadoraMatrices.productoInterno(res,psiNormalizado);
 	}
 	
 	/**
@@ -63,8 +76,10 @@ public class CalculadoraCuantica {
 	 * @throws CalculadoraException cualquier excepcion al calcular el valor esperado
 	 */
 	public static Complejo calcularVarianza(Matriz omega,Matriz psi) throws CalculadoraException {
-		Matriz delta = delta(omega,psi);
-		return calcularValorEsperado(CalculadoraMatrices.matrizPorMatriz(delta, delta),psi);
+		double[] escalarPsi = {(double)1/CalculadoraMatrices.normaDeUnVector(psi),0};
+		Matriz psiNormalizado = CalculadoraMatrices.multiplicacionEscalarMatriz(escalarPsi, psi);
+		Matriz delta = delta(omega,psiNormalizado);
+		return calcular(CalculadoraMatrices.matrizPorMatriz(delta, delta),psi);
 	}
 
 	private static Matriz delta(Matriz omega, Matriz psi) throws CalculadoraException {
