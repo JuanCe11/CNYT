@@ -1,6 +1,5 @@
 package test.java.calculadora;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -37,10 +36,58 @@ public class TestProfesorCuantica {
 		try {
 			Matriz psiM = new Matriz(4,1,psi);
 			Matriz omegaM = new Matriz(4,4,omega);
-			System.out.println(CalculadoraCuantica.calcularValorEsperado(omegaM, psiM));
-			System.out.println(CalculadoraCuantica.calcularVarianza(omegaM, psiM));
+			System.out.println("Valor esperado "+CalculadoraCuantica.calcularValorEsperado(omegaM, psiM));
+			System.out.println("Varianza "+ CalculadoraCuantica.calcularVarianza(omegaM, psiM));
 		} catch (CalculadoraException e) {
 			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
 		}
 	}
+	
+	@Test
+	public void valorCalcularAmplitud() {              
+		double[][] psi = {{-2, 1},{1, 0},{0,-1},{3,2}};
+		double[][] vector1 = {{-1,0},{0,-1},{0,-1},{1,0}};
+		double[][] vector2 = {{1,0},{0,1},{0,-1},{1,0}};
+		double[][] vector3 = {{1,0},{0,-1},{0,1},{1,0}};
+		double[][] vector4 = {{-1,0},{0,1},{0,1},{1,0}};
+		try {
+			Matriz psiM = new Matriz(4,1,psi);
+			Matriz vector1M = new Matriz(4,1,vector1);
+			Matriz vector2M = new Matriz(4,1,vector2);
+			Matriz vector3M = new Matriz(4,1,vector3);
+			Matriz vector4M = new Matriz(4,1,vector4);
+			
+			System.out.println("Probabilidad al esatdo 1 "+CalculadoraCuantica.calcularProbabilidadColapsar(psiM, vector1M));
+			System.out.println("Probabilidad al esatdo 2 "+CalculadoraCuantica.calcularProbabilidadColapsar(psiM, vector2M));
+			System.out.println("Probabilidad al esatdo 3 "+CalculadoraCuantica.calcularProbabilidadColapsar(psiM, vector3M));
+			System.out.println("Probabilidad al esatdo 4 "+CalculadoraCuantica.calcularProbabilidadColapsar(psiM, vector4M));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void valorCalcularAmplitudHallados() {              
+		double[][] psi = {{-2, 1},{1, 0},{0,-1},{3,2}};
+		double[][] vector1 = {{0,-0.5},{0,0.5},{-0.5,0},{0,-0.5}};
+		double[][] vector2 = {{-0.5,0},{-0.5,0},{0,0.5},{0.5,0}};
+		double[][] vector3 = {{0,-0.5},{0,0.5},{0.5,0},{0,0.5}};
+		double[][] vector4 = {{0.5,0},{0.5,0},{0,0.5},{0.5,0}};
+		try {
+			Matriz psiM = new Matriz(4,1,psi);
+			Matriz vector1M = new Matriz(4,1,vector1);
+			Matriz vector2M = new Matriz(4,1,vector2);
+			Matriz vector3M = new Matriz(4,1,vector3);
+			Matriz vector4M = new Matriz(4,1,vector4);
+			
+			System.out.println("Probabilidad al esatdo 1 "+CalculadoraCuantica.calcularProbabilidadColapsar(psiM, vector1M));
+			System.out.println("Probabilidad al esatdo 2 "+CalculadoraCuantica.calcularProbabilidadColapsar(psiM, vector2M));
+			System.out.println("Probabilidad al esatdo 3 "+CalculadoraCuantica.calcularProbabilidadColapsar(psiM, vector3M));
+			System.out.println("Probabilidad al esatdo 4 "+CalculadoraCuantica.calcularProbabilidadColapsar(psiM, vector4M));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	
 }

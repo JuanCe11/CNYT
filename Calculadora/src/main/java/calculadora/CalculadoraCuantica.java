@@ -38,6 +38,18 @@ public class CalculadoraCuantica {
 	}
 	
 	/**
+	 * Calcula la probabilidad de que psi colapse en phi 
+	 * @param psi primer estado
+	 * @param phi segundo estado
+	 * @return la probabilidad de que psi colapse en phi 
+	 * @throws CalculadoraException cualquier excepcion al calcular el valor esperado al calular la amplitud
+	 */
+	public static double calcularProbabilidadColapsar(Matriz psi,Matriz phi) throws CalculadoraException {
+		Complejo amplitud = calcularAmplitud(psi,phi);
+		return Math.pow(amplitud.getModulo(),2);
+	}
+	
+	/**
 	 * Calcula el valor esperado partiendo de un observador omega y un estado inicial psi 
 	 * @param omega el observable
 	 * @param psi el estado inicial 
