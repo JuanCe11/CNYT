@@ -95,7 +95,8 @@ public class CalculadoraCuantica {
 	}
 
 	private static Matriz delta(Matriz omega, Matriz psi) throws CalculadoraException {
-		double[] valorEsperado = {calcularValorEsperado(omega,psi).getReal(),calcularValorEsperado(omega,psi).getImaginaria()},menosUno = {-1,0};
+		double[] valorEsperado = {calcularValorEsperado(omega,psi).getReal(),calcularValorEsperado(omega,psi).getImaginaria()};
+		double[] menosUno = {-1,0};
 		return CalculadoraMatrices.sumaMatriz(omega, CalculadoraMatrices.multiplicacionEscalarMatriz(menosUno,CalculadoraMatrices.multiplicacionEscalarMatriz(valorEsperado, CalculadoraMatrices.identidad(omega))));
 	}
 }

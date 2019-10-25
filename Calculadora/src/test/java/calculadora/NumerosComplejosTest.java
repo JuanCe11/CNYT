@@ -132,7 +132,7 @@ public class NumerosComplejosTest {
 	public void deberiaRectangularAPolar() {
 		int[] c1 = {4,-3};
 		double[] respuesta = Calculadora.recPol(c1);
-		double[] correcta = {5.0,convertirAngulo(Math.toDegrees(Math.atan((double)-3/4)),4,-3)};
+		double[] correcta = {5.0,convertirAngulo(4,-3)};
 		assertTrue(respuesta[0]==correcta[0]&&respuesta[1]==correcta[1]);
 	}
 	
@@ -148,7 +148,7 @@ public class NumerosComplejosTest {
 	public void deberiadarFase() {
 		int[] c1 = {-3,4};
 		double respuesta = Calculadora.fase(c1);
-		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)-4/3)),-3,4);
+		double correcta = convertirAngulo(-3,4);
 		assertTrue(respuesta == correcta);
 	}
 	
@@ -156,7 +156,7 @@ public class NumerosComplejosTest {
 	public void deberiadarFase1() {
 		int[] c1 = {3,4};
 		double respuesta = Calculadora.fase(c1);
-		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)4/3)),3,4);
+		double correcta = convertirAngulo(3,4);
 		assertTrue(respuesta == correcta);
 	}
 	
@@ -164,7 +164,7 @@ public class NumerosComplejosTest {
 	public void deberiadarFase2() {
 		int[] c1 = {3,-4};
 		double respuesta = Calculadora.fase(c1);
-		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)-4/3)),3,-4);
+		double correcta = convertirAngulo(3,-4);
 		assertTrue(respuesta == correcta);
 	}
 	
@@ -172,11 +172,11 @@ public class NumerosComplejosTest {
 	public void deberiadarFase3() {
 		int[] c1 = {-3,-4};
 		double respuesta = Calculadora.fase(c1);
-		double correcta = convertirAngulo(Math.toDegrees(Math.atan((double)4/3)),-3,-4);
+		double correcta = convertirAngulo(-3,-4);
 		assertTrue(respuesta == correcta);
 	}
 	
-	private double convertirAngulo(double angulo,double real,double imaginaria) {
+	private double convertirAngulo(double real,double imaginaria) {
 		double fase;
 		fase = (double) Math.toDegrees(Math.atan(imaginaria/real));
 		if(real<0 && imaginaria<0 || real<0 && imaginaria>0) {
