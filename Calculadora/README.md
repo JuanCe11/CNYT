@@ -2,6 +2,8 @@
 ## Autor: Juan Sebastian Gómez López
 En este repositorio se encuentran librerias para diversas operaciones cuanticas.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/168232d62aef43e583b2ee12403cf4a7)](https://www.codacy.com/manual/JuanCe28/CNYT?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JuanCe28/CNYT&amp;utm_campaign=Badge_Grade)
+
 ## Laboratorio 1 
 Para este laboratorio se pedia realizar las siguientes funciones:
 1. Suma
