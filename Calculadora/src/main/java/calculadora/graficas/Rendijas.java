@@ -3,7 +3,10 @@ package main.java.calculadora.graficas;
 import org.jfree.chart.*;
 import org.jfree.data.category.*;
 
-import main.java.calculadora.*;
+import main.java.calculadora.Matriz;
+import main.java.calculadora.Respuesta;
+import main.java.calculadora.CalculadoraDinamica;
+import main.java.calculadora.CalculadoraException;
 
 public class Rendijas {
 	public static void main(String[] args) {

@@ -3,7 +3,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import main.java.calculadora.*;
+import main.java.calculadora.CalculadoraDinamica;
+import main.java.calculadora.CalculadoraException;
+import main.java.calculadora.Matriz;
 
 public class DinamicaTest {
 	

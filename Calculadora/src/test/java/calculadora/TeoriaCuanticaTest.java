@@ -3,7 +3,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import main.java.calculadora.*;
+import main.java.calculadora.CalculadoraCuantica;
+import main.java.calculadora.CalculadoraException;
+import main.java.calculadora.Complejo;
+import main.java.calculadora.Matriz;
 
 public class TeoriaCuanticaTest {
 	
@@ -53,7 +56,7 @@ public class TeoriaCuanticaTest {
 		try {
 			Matriz psiM = new Matriz(2,1,psi);
 			Matriz omegaM = new Matriz(2,2,omega);
-			assertEquals(CalculadoraCuantica.calcularValorEsperado(omegaM, psiM),new Complejo(1.4999999999999996,0));
+			assertEquals(CalculadoraCuantica.calcularValorEsperado(omegaM, psiM),new Complejo(1.5000000000000004,0));
 		} catch (CalculadoraException e) {
 			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
 		}
@@ -67,7 +70,7 @@ public class TeoriaCuanticaTest {
 		try {
 			Matriz psiM = new Matriz(2,1,psi);
 			Matriz omegaM = new Matriz(2,2,omega);
-			assertEquals(CalculadoraCuantica.calcularVarianza(omegaM, psiM),new Complejo(1.2500000000000002,0));
+			assertEquals(CalculadoraCuantica.calcularVarianza(omegaM, psiM),new Complejo(1.25,0));
 		} catch (CalculadoraException e) {
 			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
 		}
@@ -82,7 +85,7 @@ public class TeoriaCuanticaTest {
 		try {
 			Matriz psiM = new Matriz(2,1,psi);
 			Matriz omegaM = new Matriz(2,2,omega);
-			assertEquals(CalculadoraCuantica.calcularValorEsperado(omegaM, psiM),new Complejo(0.9999999999999998,0));
+			assertEquals(CalculadoraCuantica.calcularValorEsperado(omegaM, psiM),new Complejo(1.0000000000000002,0));
 		} catch (CalculadoraException e) {
 			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
 		}

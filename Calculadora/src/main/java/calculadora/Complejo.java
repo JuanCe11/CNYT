@@ -25,8 +25,10 @@ public class Complejo {
 	 * @param polar un indicador de que son coordenadas polares
 	 */
 	public Complejo(double modulo, float fase,int polar) {
-		this.fase = fase;
-		this.modulo = modulo;
+		if (polar == 0) {
+			this.fase = fase;
+			this.modulo = modulo;
+		}
 		setRectangular();
 	}
 
@@ -132,17 +134,16 @@ public class Complejo {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
+		boolean igual = true;
 		if (obj == null)
-			return false;
+			igual =  false;
 		if (getClass() != obj.getClass())
-			return false;
+			igual = false;
 		Complejo other = (Complejo) obj;
 		if (imaginaria != other.imaginaria)
-			return false;
+			igual = false;
 		if (real != other.real)
-			return false;
-		return true;
+			igual = false;
+		return igual;
 	}
 }

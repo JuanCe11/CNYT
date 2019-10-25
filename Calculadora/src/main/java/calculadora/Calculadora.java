@@ -1,21 +1,5 @@
 package main.java.calculadora;
-public class Calculadora {
-	private static Calculadora calculadora = null;
-	
-	 
-	
-	private Calculadora(){
-		
-	}
-	/**
-	 * Da la calculadora creada 
-	 * @return La calculadora a usar.
-	 */
-	public static Calculadora getCalculadora(){
-		if(calculadora == null)
-			calculadora = new Calculadora();
-		return calculadora;
-	}
+public class Calculadora{
 	/**
 	 * Calcula la suma de dos numeros complejos
 	 * @param complejo1 las componentes rectangulares del numero 1

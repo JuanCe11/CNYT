@@ -3,11 +3,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-import main.java.calculadora.*;
+import main.java.calculadora.CalculadoraException;
+import main.java.calculadora.CalculadoraMatrices;
+import main.java.calculadora.Matriz;
 
 public class MatricesTest {
-
-	Calculadora calc = Calculadora.getCalculadora();
 	
 	@Test
 	public void deberiaSumarMatriz() {

@@ -123,14 +123,15 @@ public class CalculadoraDinamica {
 		if(estadoInicial.getNumeros()[0].length!=1) {
 			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
 		}
+		Matriz estado = estadoInicial;
 		for (int i = 0; i < clicks; i++) {
 			try {
-				estadoInicial = CalculadoraMatrices.matrizPorVector(m1, estadoInicial);
+				estado = CalculadoraMatrices.matrizPorVector(m1, estado);
 			} catch (CalculadoraException e) {
 				e.printStackTrace();
 			}			
 		}
-		return estadoInicial;
+		return estado;
 	}
 	
 	/**

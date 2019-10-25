@@ -1,7 +1,7 @@
 package main.java.calculadora;
 
 
-public class CalculadoraMatrices {
+public class CalculadoraMatrices{
 	
 	/**
 	 * Suma dos vectores
@@ -295,7 +295,8 @@ public class CalculadoraMatrices {
 	 */
 	public static Matriz productoTensorial(Matriz m,Matriz m2) {
 		Complejo[][] respuesta = new Complejo[m.getNumeros().length * m2.getNumeros().length][m.getNumeros()[0].length * m2.getNumeros()[0].length];
-		int p = m2.getNumeros().length,q = m2.getNumeros()[0].length;
+		int p = m2.getNumeros().length;
+		int q = m2.getNumeros()[0].length;
 		for (int i = 0; i < respuesta.length; i++) {
 			for (int j = 0; j < respuesta[0].length; j++) {
 				respuesta[i][j] = Calculadora.multiplicacion(m.getNumeros()[i/p][j/q],m2.getNumeros()[i%p][j%q]);

@@ -4,7 +4,9 @@ import org.jfree.chart.*;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.*;
 
-import main.java.calculadora.*;
+import main.java.calculadora.Matriz;
+import main.java.calculadora.CalculadoraDinamica;
+import main.java.calculadora.CalculadoraException;
 
 public class Probabilistico {
 	public static void main(String[] args) {

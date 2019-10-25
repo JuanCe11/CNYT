@@ -4,7 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-import main.java.calculadora.*;
+import main.java.calculadora.Calculadora;
+import main.java.calculadora.CalculadoraException;
+import main.java.calculadora.Complejo;
 
 public class NumerosComplejosTest {
 	
