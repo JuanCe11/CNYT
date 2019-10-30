@@ -104,4 +104,16 @@ public class TeoriaCuanticaTest {
 			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
 		}
 	}
+	
+	@Test
+	public void calcularEsferaBloch() {
+		double raiz = (double)(2*Math.sqrt(2));
+		double[][] ket = {{(double)Math.sqrt(3)/raiz,(double)Math.sqrt(3)/raiz},{(double)-1/4,(double)Math.sqrt(3)/4}};
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+			CalculadoraCuantica.esferaBloch(ketM);
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
 }

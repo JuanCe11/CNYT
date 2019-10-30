@@ -99,4 +99,27 @@ public class CalculadoraCuantica {
 		double[] menosUno = {-1,0};
 		return CalculadoraMatrices.sumaMatriz(omega, CalculadoraMatrices.multiplicacionEscalarMatriz(menosUno,CalculadoraMatrices.multiplicacionEscalarMatriz(valorEsperado, CalculadoraMatrices.identidad(omega))));
 	}
+	
+	/**
+	 * Calcula el la varianza partiendo de un observador omega y un estado inicial psi 
+	 * @param omega el observador
+	 * @param psi el estado inicial 
+	 * @return la varianza
+	 * @throws CalculadoraException cualquier excepcion al calcular el valor esperado
+	 */
+	public static double[] esferaBloch(Matriz ket) throws CalculadoraException {
+		if (!ket.isVector()) {
+			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
+		}
+		double primeraComponente = ket.getNumeros()[0][0].getModulo();
+		double primerExponente = ket.getNumeros()[0][0].getFase();
+		double segundaComponente = ket.getNumeros()[1][0].getModulo();
+		double segundoExponente = ket.getNumeros()[0][1].getFase();
+		double angulo = Math.toDegrees(Math.acos(primeraComponente));
+		double angulo2 = Math.toDegrees(Math.asin(segundaComponente));
+		System.out.println(angulo);
+		System.out.println(angulo2);
+		return null;
+	}
+	
 }

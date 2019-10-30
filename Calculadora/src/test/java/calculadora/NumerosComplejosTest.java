@@ -176,6 +176,7 @@ public class NumerosComplejosTest {
 		assertTrue(respuesta == correcta);
 	}
 	
+
 	private double convertirAngulo(double real,double imaginaria) {
 		double fase;
 		fase = (double) Math.toDegrees(Math.atan(imaginaria/real));
