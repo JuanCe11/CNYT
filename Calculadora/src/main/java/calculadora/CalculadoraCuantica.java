@@ -111,15 +111,17 @@ public class CalculadoraCuantica {
 		if (!ket.isVector()) {
 			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
 		}
-		double primeraComponente = ket.getNumeros()[0][0].getModulo();
-		double primerExponente = ket.getNumeros()[0][0].getFase();
-		double segundaComponente = ket.getNumeros()[1][0].getModulo();
-		double segundoExponente = ket.getNumeros()[0][1].getFase();
-		double angulo = Math.toDegrees(Math.acos(primeraComponente));
-		double angulo2 = Math.toDegrees(Math.asin(segundaComponente));
-		System.out.println(angulo);
-		System.out.println(angulo2);
-		return null;
+		double[] escalarKet = {(double)1/CalculadoraMatrices.normaDeUnVector(ket),0};
+		Matriz ketNormalizado = CalculadoraMatrices.multiplicacionEscalarMatriz(escalarKet, ket);
+		
+		double primeraComponente = ketNormalizado.getNumeros()[0][0].getModulo();
+		double primerExponente = ketNormalizado.getNumeros()[0][0].getFase();
+		double segundoExponente = ketNormalizado.getNumeros()[1][0].getFase();
+		double[] respuesta = new double[2];
+		
+		respuesta[0] = Math.toDegrees(Math.acos(primeraComponente));
+		respuesta[1]= segundoExponente - primerExponente;
+		return respuesta;
 	}
 	
 }

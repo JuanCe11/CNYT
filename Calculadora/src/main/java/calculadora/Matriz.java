@@ -16,7 +16,7 @@ public class Matriz {
 			throw new CalculadoraException(CalculadoraException.FALTAN_NUMEROS);
 		}
 		this.numeros = new Complejo[filas][columnas];
-		añadirNumeros(numeros);
+		addNumeros(numeros);
 	}
 	
 	/**
@@ -39,14 +39,14 @@ public class Matriz {
 			throw new CalculadoraException(CalculadoraException.FALTAN_NUMEROS);
 		}
 		this.numeros = new Complejo[filas][columnas];
-		añadirNumeros(crearComplejos(numeros));
+		addNumeros(crearComplejos(numeros));
 	}
 
 	/**
-	 * Añade los numeros a la matriz
-	 * @param numeros numeros para añadir
+	 * Aï¿½ade los numeros a la matriz
+	 * @param numeros numeros para aï¿½adir
 	 */
-	private void añadirNumeros(Complejo[] numeros) {
+	private void addNumeros(Complejo[] numeros) {
 		int contador = 0;
 		for (int i  = 0; i < this.numeros.length;i++) {
 			for (int j  = 0; j < this.numeros[0].length;j++) {

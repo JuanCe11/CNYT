@@ -1,5 +1,8 @@
 package test.java.calculadora;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -111,9 +114,97 @@ public class TeoriaCuanticaTest {
 		double[][] ket = {{(double)Math.sqrt(3)/raiz,(double)Math.sqrt(3)/raiz},{(double)-1/4,(double)Math.sqrt(3)/4}};
 		try {
 			Matriz ketM = new Matriz(2,1,ket);
-			CalculadoraCuantica.esferaBloch(ketM);
+			double[] ans = {29.999999999999993, 255.0};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
 		} catch (CalculadoraException e) {
 			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
 		}
 	}
+	
+	@Test
+	public void ket0() {
+		double[][] ket = {{1,0},{0,0}};
+		
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+			double[] ans = {0,0};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void ket1() {
+		double[][] ket = {{0,0},{1,0}};
+			
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+
+			double[] ans = {90,0};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+			
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void ketIn() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket = {{(double)1/raiz,0},{0,(double)1/raiz}};
+		
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+			double[] ans = {45,90};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void ketOut() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket = {{0,(double)1/raiz},{(double)1/raiz,0}};
+		
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+			double[] ans = {45,-90};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+			
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void ketPlus() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket = {{(double)1/raiz,0},{(double)1/raiz,0}};
+		
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+			double[] ans = {45,0};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+			
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void ketMenos() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket = {{(double)1/raiz,0},{(double)-1/raiz,0}};
+		
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+			double[] ans = {45,180};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
 }

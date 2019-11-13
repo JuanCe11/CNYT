@@ -76,7 +76,8 @@ public class Complejo {
 	 * Calcula y asigna la fase del numero
 	 */
 	private void setFase() {
-		fase = (double) Math.toDegrees(Math.atan(imaginaria/real));
+		fase = (double) Math.toDegrees(Math.atan2(imaginaria,real));
+		
 		if(real<0 && imaginaria<0 || real<0 && imaginaria>0) {
 			fase+=180;
 		}else if (real>0 && imaginaria<0) {

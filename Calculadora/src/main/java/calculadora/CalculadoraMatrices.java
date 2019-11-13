@@ -304,4 +304,19 @@ public class CalculadoraMatrices{
 		}
 		return new Matriz(respuesta);
 	}
+	/**
+	 * Da el moduo al cuadrado de una matriz
+	 * @param m la matriz
+	 * @return el moduo al cuadrado de una matriz
+	 */
+	public static Matriz moduloAlCuadrado(Matriz m) {
+		Matriz nueva = new Matriz(m.getNumeros());
+		for (int i = 0; i < m.getNumeros().length; i++) {
+			for (int j = 0; j < m.getNumeros()[0].length; j++) {
+				double modulo = Math.pow(m.getNumeros()[i][j].getReal(),2)+Math.pow(m.getNumeros()[i][j].getImaginaria(),2);
+				nueva.getNumeros()[i][j] = new Complejo(modulo,0);
+			}
+		}
+		return nueva;
+	}
 }

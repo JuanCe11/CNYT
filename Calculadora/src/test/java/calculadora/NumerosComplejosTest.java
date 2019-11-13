@@ -179,7 +179,7 @@ public class NumerosComplejosTest {
 
 	private double convertirAngulo(double real,double imaginaria) {
 		double fase;
-		fase = (double) Math.toDegrees(Math.atan(imaginaria/real));
+		fase = (double) Math.toDegrees(Math.atan2(imaginaria,real));
 		if(real<0 && imaginaria<0 || real<0 && imaginaria>0) {
 			fase+=180;
 		}else if (real>0 && imaginaria<0) {
