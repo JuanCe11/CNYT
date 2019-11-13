@@ -162,6 +162,50 @@ public class TeoriaCuanticaTest {
 			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
 		}
 	}
+<<<<<<< HEAD
+=======
+		@Test
+	public void ket0() {
+		double[][] ket = {{1,0},{0,0}};
+		
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+			double[] ans = {0,0};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void ket1() {
+		double[][] ket = {{0,0},{1,0}};
+			
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+
+			double[] ans = {90,0};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+			
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void ketIn() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket = {{(double)1/raiz,0},{0,(double)1/raiz}};
+		
+		try {
+			Matriz ketM = new Matriz(2,1,ket);
+			double[] ans = {45,90};
+			assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+>>>>>>> 3dd6cb3cd9df7354762c9869f7beb06e45643f7f
 	
 	@Test
 	public void ketOut() {
@@ -207,4 +251,8 @@ public class TeoriaCuanticaTest {
 		}
 	}
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3dd6cb3cd9df7354762c9869f7beb06e45643f7f

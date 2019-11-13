@@ -8,9 +8,9 @@ public class CalculadoraCuantica {
 	 * @return la probabilidad de estar en cualquier estado 
 	 * @throws CalculadoraException Cuando el estado inicial no es un vector
 	 */
-	public static double[] calcularProbabilidad(Matriz estadoInicial) throws CalculadoraException {
+	public static double[] calcularProbabilidad(main.java.calculadora.Matriz estadoInicial) throws main.java.calculadora.CalculadoraException {
 		if (!estadoInicial.isVector()) {
-			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
+			throw new main.java.calculadora.CalculadoraException(main.java.calculadora.CalculadoraException.NO_ES_VECTOR);
 		}
 		double[] probabilidades = new double[estadoInicial.getNumeros().length];
 		for (int i = 0; i < estadoInicial.getNumeros().length; i++) {
