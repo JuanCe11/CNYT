@@ -1,12 +1,11 @@
-package main.java.calculadora.graficas;
+package calculadora.graficas;
 
 import org.jfree.chart.*;
 import org.jfree.data.category.*;
 
-import main.java.calculadora.Matriz;
-import main.java.calculadora.CalculadoraDinamica;
-import main.java.calculadora.CalculadoraException;
-import main.java.calculadora.Deutsch;
+import calculadora.Matriz;
+import calculadora.CalculadoraException;
+import calculadora.Deutsch;
 
 public class SimulacionDeutsch {
 	public static void main(String[] args) {

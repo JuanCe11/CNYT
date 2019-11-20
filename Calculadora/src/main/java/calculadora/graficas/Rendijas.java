@@ -1,12 +1,12 @@
-package main.java.calculadora.graficas;
+package calculadora.graficas;
 
 import org.jfree.chart.*;
 import org.jfree.data.category.*;
 
-import main.java.calculadora.Matriz;
-import main.java.calculadora.Respuesta;
-import main.java.calculadora.CalculadoraDinamica;
-import main.java.calculadora.CalculadoraException;
+import calculadora.Matriz;
+import calculadora.Respuesta;
+import calculadora.CalculadoraDinamica;
+import calculadora.CalculadoraException;
 
 public class Rendijas {
 	public static void main(String[] args) {

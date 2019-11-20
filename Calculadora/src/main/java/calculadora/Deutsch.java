@@ -1,11 +1,11 @@
-package main.java.calculadora;
+package calculadora;
 
 public class Deutsch {
 	
 	static Matriz cero,uno,u0,u1,ui,uc,hadamart;
 
 	/**
-	 * Crea las matrices necasarias para la simulación
+	 * Crea las matrices necasarias para la simulaciï¿½n
 	 */
 	private static void crearMatrices() {
 		double[][] u0d = {{1,0},{0,0},{0,0},{0,0},

@@ -1,4 +1,4 @@
-package main.java.calculadora;
+package calculadora;
 
 public class CalculadoraCuantica {
 	
@@ -8,7 +8,7 @@ public class CalculadoraCuantica {
 	 * @return la probabilidad de estar en cualquier estado 
 	 * @throws CalculadoraException Cuando el estado inicial no es un vector
 	 */
-	public static double[] calcularProbabilidad(main.java.calculadora.Matriz estadoInicial) throws CalculadoraException {
+	public static double[] calcularProbabilidad(Matriz estadoInicial) throws CalculadoraException {
 		if (!estadoInicial.isVector()) {
 			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);
 		}
@@ -99,14 +99,7 @@ public class CalculadoraCuantica {
 		double[] menosUno = {-1,0};
 		return CalculadoraMatrices.sumaMatriz(omega, CalculadoraMatrices.multiplicacionEscalarMatriz(menosUno,CalculadoraMatrices.multiplicacionEscalarMatriz(valorEsperado, CalculadoraMatrices.identidad(omega))));
 	}
-	
-	/**
-	 * Calcula el la varianza partiendo de un observador omega y un estado inicial psi 
-	 * @param omega el observador
-	 * @param psi el estado inicial 
-	 * @return la varianza
-	 * @throws CalculadoraException cualquier excepcion al calcular el valor esperado
-	 */
+
 	public static double[] esferaBloch(Matriz ket) throws CalculadoraException {
 		if (!ket.isVector()) {
 			throw new CalculadoraException(CalculadoraException.NO_ES_VECTOR);

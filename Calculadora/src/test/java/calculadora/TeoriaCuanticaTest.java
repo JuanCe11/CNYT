@@ -1,4 +1,4 @@
-package test.java.calculadora;
+package calculadora;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -6,10 +6,10 @@ import java.util.Arrays;
 
 import org.junit.Test;
 
-import main.java.calculadora.CalculadoraCuantica;
-import main.java.calculadora.CalculadoraException;
-import main.java.calculadora.Complejo;
-import main.java.calculadora.Matriz;
+import calculadora.CalculadoraCuantica;
+import calculadora.CalculadoraException;
+import calculadora.Complejo;
+import calculadora.Matriz;
 
 public class TeoriaCuanticaTest {
 	

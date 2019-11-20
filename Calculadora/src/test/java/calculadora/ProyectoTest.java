@@ -1,13 +1,13 @@
-package test.java.calculadora;
+package calculadora;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-import main.java.calculadora.CalculadoraDinamica;
-import main.java.calculadora.CalculadoraException;
-import main.java.calculadora.Matriz;
-import main.java.calculadora.Respuesta;
+import calculadora.CalculadoraDinamica;
+import calculadora.CalculadoraException;
+import calculadora.Matriz;
+import calculadora.Respuesta;
 
 
 

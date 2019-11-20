@@ -1,4 +1,4 @@
-package main.java.calculadora;
+package calculadora;
 public class Calculadora{
 	/**
 	 * Calcula la suma de dos numeros complejos

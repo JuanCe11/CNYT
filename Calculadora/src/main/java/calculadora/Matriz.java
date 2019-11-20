@@ -1,4 +1,4 @@
-package main.java.calculadora;
+package calculadora;
 import java.util.Arrays;
 
 public class Matriz {

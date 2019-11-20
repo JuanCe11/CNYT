@@ -1,11 +1,11 @@
-package main.java.calculadora.graficas;
+package calculadora.graficas;
 
 import org.jfree.chart.*;
 import org.jfree.data.category.*;
 
-import main.java.calculadora.Matriz;
-import main.java.calculadora.CalculadoraDinamica;
-import main.java.calculadora.Respuesta;
+import calculadora.Matriz;
+import calculadora.CalculadoraDinamica;
+import calculadora.Respuesta;
 
 public class Clasica {
 	public static void main(String[] args) {
@@ -41,8 +41,8 @@ public class Clasica {
 		for (int i = 0; i < estadoFinal.getNumeros().length; i++) {
 			data.setValue(estadoFinal.getNumeros()[i][0].getReal(),sitio1,Integer.toString(i));			
 		}
-		JFreeChart chart = ChartFactory.createBarChart("Clásica","Estados","Probabilidad",data);
-		ChartFrame frame = new ChartFrame("Clásica",chart);
+		JFreeChart chart = ChartFactory.createBarChart("Clï¿½sica","Estados","Probabilidad",data);
+		ChartFrame frame = new ChartFrame("Clï¿½sica",chart);
         frame.pack();
         frame.setVisible(true);
 	}

@@ -1,12 +1,9 @@
-package test.java.calculadora;
+package calculadora;
 import static org.junit.Assert.assertEquals;
 
 
 import org.junit.Test;
 
-import main.java.calculadora.CalculadoraException;
-import main.java.calculadora.Matriz;
-import main.java.calculadora.Deutsch;
 
 public class DeutschTest {
 	
