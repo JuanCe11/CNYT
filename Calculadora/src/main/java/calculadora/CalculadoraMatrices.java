@@ -319,4 +319,19 @@ public class CalculadoraMatrices{
 		}
 		return nueva;
 	}
+
+	/**
+	 * Calcula la potencia de una matriz
+	 * @param matriz la matriz a mutiplicar
+	 * @param potencia exponente al que se multiplica la matriz
+	 * @return una matriz con el resultado de la potencia
+	 * @throws CalculadoraException excepciones en el calculo de la multiplicacion
+	 */
+	private static Matriz calcularPotencia(Matriz matriz, int potencia) throws CalculadoraException {
+		Matriz potenciaM = matriz;
+		for (int i = 0; i < potencia; i++) {
+			potenciaM = CalculadoraMatrices.matrizPorMatriz(potenciaM, potenciaM);
+		}
+		return matriz;
+	}
 }
