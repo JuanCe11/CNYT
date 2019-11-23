@@ -52,3 +52,14 @@ Para este laboratorio se pedia realizar las siguientes funciones:
 3. El sistema calcula los valores propios del observable y la probabilidad de que el sistema transite a alguno de los vectores propios después de la observación.
 
 La solución a estos puntos se encuentra en el archivo CalculadoraCuantica.java. Las pruebas de esta parte estan en el archivo TeoriaCuanticaTest.java.
+
+## Esfera de Bloch
+1. Ejercicio de calentamiento. Grafique una esfera que representará el planeta Tierra. Grafique como puntos sobre la esfera cada una de las ciudades dadas, asegúrese de crear también una etiqueta con el nombre de la ciudad. Expanda la lista con 5 ciudades de su elección.
+2. Ejercicio la esfera de Bloch. Grafique una esfera. Use su función ket_a_Bloch para graficar como flechas cada uno de los siguientes kets básicos: 
+|0>, |1>, |in>,|out>,|+>,|->
+
+La solución a estos puntos se encuentra en el archivo Esfera de bloch.ipynb. Las pruebas de esta parte estan en el archivo TeoriaCuanticaTest.java.
+
+## Implementación de Algoritmo de Deutsch y Deutsch-Jozsa
+
+Las simulaciones a estos puntos se encuentran en el archivo Deutsch.java, DeutschJozsa.java la parte grafica esta en SimulacionDeutsch.java y SimulacionDeutschJozsa.java. Los test de estas simulaciones esatn en el archivo DeutschTest.java y DeutschJozsaTest.java.  
