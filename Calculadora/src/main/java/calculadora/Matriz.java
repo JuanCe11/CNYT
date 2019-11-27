@@ -1,5 +1,6 @@
 package calculadora;
 import java.util.Arrays;
+import calculadora.Complejo;
 
 public class Matriz {
 	private Complejo[][] numeros;

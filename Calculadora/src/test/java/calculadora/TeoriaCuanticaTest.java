@@ -206,4 +206,265 @@ public class TeoriaCuanticaTest {
 			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
 		}
 	}
+	
+	
+	@Test
+	public void transformacionI() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket0 = {{1,0},{0,0}};
+		double[][] ket1 = {{0,0},{1,0}};
+		double[][] ketIn = {{(double)1/raiz,0},{0,(double)1/raiz}};
+		double[][] ketOut = {{0,(double)1/raiz},{(double)1/raiz,0}};
+		double[][] ketPlus = {{(double)1/raiz,0},{(double)1/raiz,0}};
+		double[][] ketMenos = {{(double)1/raiz,0},{(double)-1/raiz,0}};
+		double[][] matriz = {{1,0},{0,0},{0,0},{1,0}};
+		
+		try {
+			Matriz ket0M = new Matriz(2,1,ket0);
+			Matriz ket1M = new Matriz(2,1,ket1);
+			Matriz ketInM = new Matriz(2,1,ketIn);
+			Matriz ketOutM = new Matriz(2,1,ketOut);
+			Matriz ketPlusM = new Matriz(2,1,ketPlus);
+			Matriz ketMenosM = new Matriz(2,1,ketMenos);
+			Matriz matrizM = new Matriz(2,2,matriz);
+			Matriz ket0TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket0M);
+			Matriz ket1TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket1M);
+			Matriz ketInTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketInM);
+			Matriz ketOutTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketOutM);
+			Matriz ketPlusTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketPlusM);
+			Matriz ketMenosTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketMenosM);		
+			double[] res1 = CalculadoraCuantica.esferaBloch(ket0TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ket1TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketInTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketOutTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketPlusTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketMenosTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			//assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void transformacionX() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket0 = {{1,0},{0,0}};
+		double[][] ket1 = {{0,0},{1,0}};
+		double[][] ketIn = {{(double)1/raiz,0},{0,(double)1/raiz}};
+		double[][] ketOut = {{0,(double)1/raiz},{(double)1/raiz,0}};
+		double[][] ketPlus = {{(double)1/raiz,0},{(double)1/raiz,0}};
+		double[][] ketMenos = {{(double)1/raiz,0},{(double)-1/raiz,0}};
+		double[][] matriz = {{0,0},{1,0},{1,0},{0,0}};
+		
+		try {
+			Matriz ket0M = new Matriz(2,1,ket0);
+			Matriz ket1M = new Matriz(2,1,ket1);
+			Matriz ketInM = new Matriz(2,1,ketIn);
+			Matriz ketOutM = new Matriz(2,1,ketOut);
+			Matriz ketPlusM = new Matriz(2,1,ketPlus);
+			Matriz ketMenosM = new Matriz(2,1,ketMenos);
+			Matriz matrizM = new Matriz(2,2,matriz);
+			Matriz ket0TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket0M);
+			Matriz ket1TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket1M);
+			Matriz ketInTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketInM);
+			Matriz ketOutTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketOutM);
+			Matriz ketPlusTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketPlusM);
+			Matriz ketMenosTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketMenosM);		
+			double[] res1 = CalculadoraCuantica.esferaBloch(ket0TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ket1TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketInTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketOutTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketPlusTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketMenosTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			//assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void transformacionY() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket0 = {{1,0},{0,0}};
+		double[][] ket1 = {{0,0},{1,0}};
+		double[][] ketIn = {{(double)1/raiz,0},{0,(double)1/raiz}};
+		double[][] ketOut = {{0,(double)1/raiz},{(double)1/raiz,0}};
+		double[][] ketPlus = {{(double)1/raiz,0},{(double)1/raiz,0}};
+		double[][] ketMenos = {{(double)1/raiz,0},{(double)-1/raiz,0}};
+		double[][] matriz = {{0,0},{0,-1},{0,1},{0,0}};
+		
+		try {
+			Matriz ket0M = new Matriz(2,1,ket0);
+			Matriz ket1M = new Matriz(2,1,ket1);
+			Matriz ketInM = new Matriz(2,1,ketIn);
+			Matriz ketOutM = new Matriz(2,1,ketOut);
+			Matriz ketPlusM = new Matriz(2,1,ketPlus);
+			Matriz ketMenosM = new Matriz(2,1,ketMenos);
+			Matriz matrizM = new Matriz(2,2,matriz);
+			Matriz ket0TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket0M);
+			Matriz ket1TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket1M);
+			Matriz ketInTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketInM);
+			Matriz ketOutTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketOutM);
+			Matriz ketPlusTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketPlusM);
+			Matriz ketMenosTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketMenosM);		
+			double[] res1 = CalculadoraCuantica.esferaBloch(ket0TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ket1TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketInTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketOutTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketPlusTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketMenosTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			//assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void transformacionZ() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket0 = {{1,0},{0,0}};
+		double[][] ket1 = {{0,0},{1,0}};
+		double[][] ketIn = {{(double)1/raiz,0},{0,(double)1/raiz}};
+		double[][] ketOut = {{0,(double)1/raiz},{(double)1/raiz,0}};
+		double[][] ketPlus = {{(double)1/raiz,0},{(double)1/raiz,0}};
+		double[][] ketMenos = {{(double)1/raiz,0},{(double)-1/raiz,0}};
+		double[][] matriz = {{1,0},{0,0},{0,0},{-1,0}};
+		
+		try {
+			Matriz ket0M = new Matriz(2,1,ket0);
+			Matriz ket1M = new Matriz(2,1,ket1);
+			Matriz ketInM = new Matriz(2,1,ketIn);
+			Matriz ketOutM = new Matriz(2,1,ketOut);
+			Matriz ketPlusM = new Matriz(2,1,ketPlus);
+			Matriz ketMenosM = new Matriz(2,1,ketMenos);
+			Matriz matrizM = new Matriz(2,2,matriz);
+			Matriz ket0TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket0M);
+			Matriz ket1TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket1M);
+			Matriz ketInTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketInM);
+			Matriz ketOutTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketOutM);
+			Matriz ketPlusTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketPlusM);
+			Matriz ketMenosTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketMenosM);		
+			double[] res1 = CalculadoraCuantica.esferaBloch(ket0TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ket1TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketInTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketOutTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketPlusTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketMenosTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			//assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void transformacionS() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket0 = {{1,0},{0,0}};
+		double[][] ket1 = {{0,0},{1,0}};
+		double[][] ketIn = {{(double)1/raiz,0},{0,(double)1/raiz}};
+		double[][] ketOut = {{0,(double)1/raiz},{(double)1/raiz,0}};
+		double[][] ketPlus = {{(double)1/raiz,0},{(double)1/raiz,0}};
+		double[][] ketMenos = {{(double)1/raiz,0},{(double)-1/raiz,0}};
+		double[][] matriz = {{1,0},{0,0},{0,0},{0,1}};
+		
+		try {
+			Matriz ket0M = new Matriz(2,1,ket0);
+			Matriz ket1M = new Matriz(2,1,ket1);
+			Matriz ketInM = new Matriz(2,1,ketIn);
+			Matriz ketOutM = new Matriz(2,1,ketOut);
+			Matriz ketPlusM = new Matriz(2,1,ketPlus);
+			Matriz ketMenosM = new Matriz(2,1,ketMenos);
+			Matriz matrizM = new Matriz(2,2,matriz);
+			Matriz ket0TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket0M);
+			Matriz ket1TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket1M);
+			Matriz ketInTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketInM);
+			Matriz ketOutTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketOutM);
+			Matriz ketPlusTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketPlusM);
+			Matriz ketMenosTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketMenosM);		
+			double[] res1 = CalculadoraCuantica.esferaBloch(ket0TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ket1TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketInTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketOutTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketPlusTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketMenosTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			//assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+	@Test
+	public void transformacionT() {
+		double raiz = (double)(Math.sqrt(2));
+		double[][] ket0 = {{1,0},{0,0}};
+		double[][] ket1 = {{0,0},{1,0}};
+		double[][] ketIn = {{(double)1/raiz,0},{0,(double)1/raiz}};
+		double[][] ketOut = {{0,(double)1/raiz},{(double)1/raiz,0}};
+		double[][] ketPlus = {{(double)1/raiz,0},{(double)1/raiz,0}};
+		double[][] ketMenos = {{(double)1/raiz,0},{(double)-1/raiz,0}};
+		double[][] matriz = {{1,0},{0,0},{0,0},{Math.cos((Math.PI)/4),Math.sin((Math.PI)/4)}};
+		
+		try {
+			Matriz ket0M = new Matriz(2,1,ket0);
+			Matriz ket1M = new Matriz(2,1,ket1);
+			Matriz ketInM = new Matriz(2,1,ketIn);
+			Matriz ketOutM = new Matriz(2,1,ketOut);
+			Matriz ketPlusM = new Matriz(2,1,ketPlus);
+			Matriz ketMenosM = new Matriz(2,1,ketMenos);
+			Matriz matrizM = new Matriz(2,2,matriz);
+			Matriz ket0TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket0M);
+			Matriz ket1TransM = CalculadoraMatrices.matrizPorVector(matrizM, ket1M);
+			Matriz ketInTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketInM);
+			Matriz ketOutTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketOutM);
+			Matriz ketPlusTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketPlusM);
+			Matriz ketMenosTransM = CalculadoraMatrices.matrizPorVector(matrizM, ketMenosM);		
+			double[] res1 = CalculadoraCuantica.esferaBloch(ket0TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ket1TransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketInTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketOutTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketPlusTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			res1 = CalculadoraCuantica.esferaBloch(ketMenosTransM);
+			System.out.println(res1[0]+" "+res1[1]);
+			//assertTrue(Arrays.equals(CalculadoraCuantica.esferaBloch(ketM), ans));
+		} catch (CalculadoraException e) {
+			assertEquals(e.getMessage(), CalculadoraException.MATRIZ_INVALIDA);
+		}
+	}
+	
+		
 }
